@@ -16,15 +16,15 @@
 
 
 
-    <meta name="description" content="測試測試">
+    <meta name="description" content="測試 test">
 <meta property="og:type" content="article">
 <meta property="og:title" content="測試">
 <meta property="og:url" content="http://example.com/2021/01/16/%E6%B8%AC%E8%A9%A6/index.html">
 <meta property="og:site_name" content="Mily">
-<meta property="og:description" content="測試測試">
-<meta property="og:locale" content="en_US">
+<meta property="og:description" content="測試 test">
+<meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-01-16T10:35:07.000Z">
-<meta property="article:modified_time" content="2021-01-16T12:38:04.967Z">
+<meta property="article:modified_time" content="2021-01-16T18:16:43.791Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
@@ -85,35 +85,34 @@
                 <span></span>
             </div>
         </div>
-        
-        <div class="navbar-menu navbar-start">
+        <div class="navbar-end">
             
-            <a class="navbar-item "
-               href="/archives">Archives</a>
-            
-            <a class="navbar-item "
-               href="/categories">Category</a>
-            
-            <a class="navbar-item "
-               href="/about">About</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            
-            <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+            <div class="navbar-menu">
                 
-                <i class="fab fa-github"></i>
+                <a class="navbar-item "
+                   href="/archives">Archives</a>
                 
-            </a>
-               
+                <a class="navbar-item "
+                   href="/categories">Category</a>
+                
+            </div>
             
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
         </div>
     </div>
 </nav>
@@ -121,14 +120,14 @@
     <section class="section">
     <div class="container">
     <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
         
             測試
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
         <span class="column is-narrow">
-            <time datetime="2021-01-16T10:35:07.000Z" itemprop="datePublished">Jan 16 2021</time>
+            <time datetime="2021-01-16T10:35:07.000Z" itemprop="datePublished">1月 16 2021</time>
         </span>
         
         <span class="column is-narrow article-category">
@@ -140,13 +139,13 @@
         <span class="column is-narrow">
             
             
-            a few seconds read (About 4 words)
+            几秒 讀完 (約 3 字)
         </span>
          -->
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
-        <html><head></head><body><p>測試測試</p>
+        <html><head></head><body><p>測試 test</p>
 </body></html>
     
     </div>
@@ -210,7 +209,7 @@
     window.FontAwesomeConfig = {
         searchPseudoElements: true
     }
-    moment.locale("en-AU");
+    moment.locale("zh-CN");
 </script>
 
 
@@ -336,7 +335,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -348,11 +347,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
             },
             CONTENT_URL: '/content.json',
         };

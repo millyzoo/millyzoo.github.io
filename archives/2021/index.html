@@ -2,7 +2,7 @@
 <html class="has-navbar-fixed-top">
 <head>
     <meta charset="utf-8">
-<title>Archives: 2021 - Mily</title>
+<title>封存: 2021 - Mily</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -20,7 +20,7 @@
 <meta property="og:title" content="Mily">
 <meta property="og:url" content="http://example.com/archives/2021/index.html">
 <meta property="og:site_name" content="Mily">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_TW">
 <meta property="article:author" content="Mily">
 <meta name="twitter:card" content="summary">
 
@@ -80,35 +80,34 @@
                 <span></span>
             </div>
         </div>
-        
-        <div class="navbar-menu navbar-start">
+        <div class="navbar-end">
             
-            <a class="navbar-item "
-               href="/archives">Archives</a>
-            
-            <a class="navbar-item "
-               href="/categories">Category</a>
-            
-            <a class="navbar-item "
-               href="/about">About</a>
-            
-        </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            <a class="navbar-item search" title="Search" href="javascript:;">
-                <i class="fas fa-search"></i>
-            </a>
-            
-            
-            
-            <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+            <div class="navbar-menu">
                 
-                <i class="fab fa-github"></i>
+                <a class="navbar-item "
+                   href="/archives">Archives</a>
                 
-            </a>
-               
+                <a class="navbar-item "
+                   href="/categories">Category</a>
+                
+            </div>
             
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
         </div>
     </div>
 </nav>
@@ -123,13 +122,13 @@
             
                 <div class="article content flexbox">
                     <time class="is-text-small monospace mr1" datetime="2021-01-16T10:35:07.000Z" itemprop="datePublished">
-                        Jan 16</time>
+                        1月 16</time>
                     <h6 class="title is-6"><a href="/2021/01/16/%E6%B8%AC%E8%A9%A6/">測試</a></h6>
                 </div>
             
                 <div class="article content flexbox">
                     <time class="is-text-small monospace mr1" datetime="2021-01-16T07:56:27.619Z" itemprop="datePublished">
-                        Jan 16</time>
+                        1月 16</time>
                     <h6 class="title is-6"><a href="/2021/01/16/hello-world/">Hello World</a></h6>
                 </div>
             
@@ -173,7 +172,7 @@
     window.FontAwesomeConfig = {
         searchPseudoElements: true
     }
-    moment.locale("en-AU");
+    moment.locale("zh-CN");
 </script>
 
 
@@ -299,7 +298,7 @@
     <div class="searchbox-mask"></div>
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -311,11 +310,11 @@
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
             },
             CONTENT_URL: '/content.json',
         };
