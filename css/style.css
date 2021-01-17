@@ -21,6 +21,12 @@ body {
 body, button, input, select, textarea {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; }
 
+hr {
+  height: 0;
+  background-color: transparent;
+  border: none;
+  border-top: 1px dotted #dbdbdb; }
+
 /* customize icon font http://app.fontastic.me */
 @font-face {
   font-family: "untitled-font-1";
@@ -150,6 +156,39 @@ a.tag.article-tag {
     max-height: 500px;
     overflow-y: auto; }
 
+.article h1 {
+  font-size: 30px;
+  font-weight: 700; }
+
+.article h2 {
+  padding-bottom: 5px;
+  font-size: 26px;
+  border-bottom: 1px dotted #dbdbdb;
+  font-weight: 500; }
+
+.article h3 {
+  font-size: 24px;
+  font-weight: 500; }
+
+.article h4 {
+  font-size: 22px;
+  font-weight: 500; }
+
+.article h5 {
+  font-size: 20px;
+  font-weight: 500; }
+
+.article h6 {
+  font-size: 18px;
+  font-weight: 500; }
+
+.article ul, .article ol {
+  margin-left: 1.5em; }
+
+.article ul ul {
+  margin-top: .3em;
+  margin-bottom: .6em; }
+
 .article + .article {
   padding-top: 2rem;
   border-top: 1px dotted #dbdbdb; }
@@ -157,33 +196,34 @@ a.tag.article-tag {
 .article .article-title {
   margin-bottom: 10px;
   color: inherit;
-  font-size: 24px;
-  font-weight: 700; }
+  font-size: 30px;
+  font-weight: 700;
+  color: #363636; }
   .article .article-title a {
     color: inherit;
     font-size: 24px;
     font-weight: 700;
-    transition: 0.3s; }
+    transition: 0.3s;
+    color: #363636; }
     .article .article-title a:hover {
       opacity: 0.7; }
-
-.article .article-meta a {
-  color: inherit;
-  transition: 0.3s; }
-  .article .article-meta a:hover {
-    color: #111111; }
 
 .article .article-meta {
   color: #969696;
   font-size: .9rem; }
+  .article .article-meta a {
+    color: inherit;
+    transition: 0.3s; }
+    .article .article-meta a:hover {
+      color: #111111; }
+  .article .article-meta .article-category-link {
+    margin: 0 0.3rem; }
   @media screen and (max-width: 768px) {
     .article .article-meta {
       margin-top: 0.75rem; }
       .article .article-meta .column {
         padding-top: 0;
         padding-bottom: 0; } }
-  .article .article-meta .article-category-link {
-    margin: 0 0.3rem; }
 
 .article .article-entry {
   margin-bottom: 3rem; }
@@ -239,71 +279,66 @@ a.tag.article-tag {
   font-size: .95rem;
   text-align: center; }
 
-.article blockquote.colorquote {
-  position: relative; }
-  .article blockquote.colorquote:before {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    left: -14.5px;
-    margin-top: -12px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    text-align: center;
-    color: white;
-    background-size: 16px 16px;
-    background-position: 4px 4px;
-    background-repeat: no-repeat; }
-  .article blockquote.colorquote.info {
-    border-color: #209cee;
-    background-color: #def0fd; }
-    .article blockquote.colorquote.info:before {
-      background-color: #209cee;
-      background-image: url("../images/info.svg"); }
-  .article blockquote.colorquote.success {
-    border-color: #23d160;
-    background-color: #cbf6da; }
-    .article blockquote.colorquote.success:before {
-      background-color: #23d160;
-      background-image: url("../images/check.svg"); }
-  .article blockquote.colorquote.warning {
-    border-color: #ffdd57;
-    background-color: #fff6d1; }
-    .article blockquote.colorquote.warning:before {
-      background-color: #ffdd57;
-      background-image: url("../images/question.svg"); }
-  .article blockquote.colorquote.danger {
-    border-color: #ff3860;
-    background-color: #ffb3c2; }
-    .article blockquote.colorquote.danger:before {
-      background-color: #ff3860;
-      background-image: url("../images/exclamation.svg"); }
+.article a[target="_blank"]:after {
+  content: "\67";
+  font-size: .7rem;
+  font-family: "untitled-font-1";
+  margin-left: .2rem; }
 
-.article blockquote.pullquote {
-  float: right;
-  max-width: 50%;
-  font-size: 1.15rem;
-  position: relative; }
-  @media screen and (max-width: 768px) {
-    .article blockquote.pullquote {
-      float: none;
-      max-width: 100%; } }
-  .article blockquote.pullquote:before {
-    content: " ";
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: 3rem;
-    height: 3rem;
-    opacity: 0.1;
-    background: url("../images/quote-left.svg") 0 0/3rem 3rem no-repeat; }
-
-.article blockquote footer cite {
-  font-style: normal; }
-  .article blockquote footer cite:before {
-    content: "—";
-    padding: 0 .3em; }
+.article blockquote {
+  background-color: #ebebeb;
+  border-left: 5px solid #dbdbdb; }
+  .article blockquote.colorquote {
+    position: relative; }
+    .article blockquote.colorquote:before {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      left: -14.5px;
+      margin-top: -12px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      color: white;
+      background-size: 16px 16px;
+      background-position: 4px 4px;
+      background-repeat: no-repeat; }
+    .article blockquote.colorquote.info {
+      border-color: #209cee;
+      background-color: #def0fd; }
+    .article blockquote.colorquote.success {
+      border-color: #23d160;
+      background-color: #cbf6da; }
+    .article blockquote.colorquote.warning {
+      border-color: #ffdd57;
+      background-color: #fff6d1; }
+    .article blockquote.colorquote.danger {
+      border-color: rgba(211, 59, 92, 0.3);
+      background-color: rgba(255, 226, 231, 0.7); }
+  .article blockquote.pullquote {
+    float: right;
+    max-width: 50%;
+    font-size: 1.15rem;
+    position: relative; }
+    @media screen and (max-width: 768px) {
+      .article blockquote.pullquote {
+        float: none;
+        max-width: 100%; } }
+    .article blockquote.pullquote:before {
+      content: " ";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 3rem;
+      height: 3rem;
+      opacity: 0.1;
+      background: url("../images/quote-left.svg") 0 0/3rem 3rem no-repeat; }
+  .article blockquote footer cite {
+    font-style: normal; }
+    .article blockquote footer cite:before {
+      content: "—";
+      padding: 0 .3em; }
 
 .article .gist table tr:hover {
   background: transparent; }
@@ -350,6 +385,7 @@ a.tag.article-tag {
         border-bottom-color: darkgray; }
 
 .footer {
+  padding: 40px 1.5rem;
   font-size: 13px;
   background: transparent;
   color: #888888; }
@@ -430,7 +466,9 @@ a.tag.article-tag {
 
 code, pre {
   font-size: 0.85rem;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei"; }
+  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  background-color: #e8e8e8;
+  color: #4a4a4a; }
 
 figure.highlight {
   padding: 0;

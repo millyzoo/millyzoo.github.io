@@ -15,12 +15,13 @@
         didScroll = true;
     });
 
-    setInterval(function() {
-        if (didScroll) {
-            hasScrolled();
-            didScroll = false;
-        }
-    }, 250);
+    // 移動捲軸 navbar 收合效果
+    // setInterval(function() {
+    //     if (didScroll) {
+    //         hasScrolled();
+    //         didScroll = false;
+    //     }
+    // }, 250);
 
     function hasScrolled() {
         var st = $(this).scrollTop();
