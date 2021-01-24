@@ -306,8 +306,11 @@ a.tag.article-tag {
   margin-left: .2rem; }
 
 .article blockquote {
+  padding: 0.8em 1.5em;
   background-color: #ebebeb;
   border-left: 5px solid #dbdbdb; }
+  .article blockquote p {
+    margin: 0; }
   .article blockquote code, .article blockquote pre {
     background-color: #dadada; }
   .article blockquote.colorquote {
