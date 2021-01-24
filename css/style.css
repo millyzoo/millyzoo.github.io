@@ -156,6 +156,26 @@ a.tag.article-tag {
     max-height: 500px;
     overflow-y: auto; }
 
+.article strong {
+  color: #d5324a;
+  font-weight: 500; }
+
+.article a {
+  color: #3582fe;
+  border-bottom: 1px dotted transparent;
+  transition: 0.3s; }
+  .article a:hover {
+    border-bottom: 1px dotted #3582fe; }
+  .article a.tag.article-tag:hover {
+    background-color: #dfdfdf;
+    border-bottom: 1px dotted transparent; }
+
+.article p {
+  line-height: 1.7; }
+
+.article p, .article p:not(:last-child) {
+  margin: 0.5rem 0; }
+
 .article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
   font-weight: 700; }
 
@@ -168,16 +188,16 @@ a.tag.article-tag {
   border-bottom: 1px dotted #dbdbdb; }
 
 .article h3 {
-  font-size: 24px; }
-
-.article h4 {
   font-size: 22px; }
 
-.article h5 {
+.article h4 {
   font-size: 20px; }
 
-.article h6 {
+.article h5 {
   font-size: 18px; }
+
+.article h6 {
+  font-size: 16px; }
 
 .article ul, .article ol {
   margin-left: 1.5em; }
@@ -285,6 +305,8 @@ a.tag.article-tag {
 .article blockquote {
   background-color: #ebebeb;
   border-left: 5px solid #dbdbdb; }
+  .article blockquote code, .article blockquote pre {
+    background-color: #dadada; }
   .article blockquote.colorquote {
     position: relative; }
     .article blockquote.colorquote:before {
