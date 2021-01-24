@@ -120,7 +120,7 @@ a.tag.article-tag {
   background-color: #f5f5f5;
   transition: 0.1s ease-in; }
   .navbar-main .navbar-item.navbar-logo {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     color: #111111; }
   .navbar-main .navbar-item.search:hover::after, .navbar-main .navbar-item.navbar-logo:hover::after {
@@ -156,31 +156,28 @@ a.tag.article-tag {
     max-height: 500px;
     overflow-y: auto; }
 
-.article h1 {
-  font-size: 30px;
+.article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
   font-weight: 700; }
+
+.article h1 {
+  font-size: 30px; }
 
 .article h2 {
   padding-bottom: 5px;
   font-size: 26px;
-  border-bottom: 1px dotted #dbdbdb;
-  font-weight: 500; }
+  border-bottom: 1px dotted #dbdbdb; }
 
 .article h3 {
-  font-size: 24px;
-  font-weight: 500; }
+  font-size: 24px; }
 
 .article h4 {
-  font-size: 22px;
-  font-weight: 500; }
+  font-size: 22px; }
 
 .article h5 {
-  font-size: 20px;
-  font-weight: 500; }
+  font-size: 20px; }
 
 .article h6 {
-  font-size: 18px;
-  font-weight: 500; }
+  font-size: 18px; }
 
 .article ul, .article ol {
   margin-left: 1.5em; }
@@ -526,14 +523,20 @@ figure.highlight {
     .pagination .pagination-next:active,
     .pagination .pagination-link:active {
       box-shadow: none; }
-  .pagination .pagination-link:hover {
-    border-color: black; }
+  .pagination .pagination-link {
+    transition: 0.3s; }
+    .pagination .pagination-link:hover {
+      border-color: #111111; }
   .pagination .pagination-link.is-current {
-    background-color: black; }
+    background-color: #111111; }
   .pagination .pagination-previous a,
   .pagination .pagination-next a {
     position: relative;
-    color: inherit; }
+    color: #969696;
+    transition: 0.3s; }
+    .pagination .pagination-previous a:hover,
+    .pagination .pagination-next a:hover {
+      color: #111111; }
   .pagination .pagination-previous a {
     padding-left: 1rem; }
     .pagination .pagination-previous a:before {
