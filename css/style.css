@@ -175,7 +175,7 @@ a.tag.article-tag {
   line-height: 1.7; }
 
 .article p, .article p:not(:last-child) {
-  margin: 0.5rem 0; }
+  margin: 1em 0; }
 
 .article h1, .article h2, .article h3, .article h4, .article h5, .article h6 {
   font-weight: 700; }
@@ -192,6 +192,7 @@ a.tag.article-tag {
   font-size: 22px; }
 
 .article h4 {
+  margin: 1em 0 0.6em 0;
   font-size: 20px; }
 
 .article h5 {
