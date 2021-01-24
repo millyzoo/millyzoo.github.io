@@ -90,7 +90,10 @@ hr {
 a.tag.article-tag {
   font-size: 0.9rem;
   text-decoration: none;
-  background-color: #e8e8e8; }
+  background-color: #e8e8e8;
+  transition: 0.3s; }
+  a.tag.article-tag:hover {
+    background-color: #dfdfdf; }
 
 @media screen and (min-width: 1024px) {
   .navbar .container {
@@ -233,9 +236,11 @@ a.tag.article-tag {
   font-size: .9rem; }
   .article .article-meta a {
     color: inherit;
+    border-bottom: none;
     transition: 0.3s; }
     .article .article-meta a:hover {
-      color: #111111; }
+      color: #111111;
+      border-bottom: none; }
   .article .article-meta .article-category-link {
     margin: 0 0.3rem; }
   @media screen and (max-width: 768px) {
@@ -384,6 +389,12 @@ a.tag.article-tag {
   border-top: 1px solid #dbdbdb; }
   .comments > .title {
     font-weight: 300; }
+
+.archive a {
+  color: #4a4a4a; }
+  .archive a:hover {
+    color: #111111;
+    border-bottom: 1px dotted #4a4a4a; }
 
 .archive:not(:last-child) {
   margin-bottom: 3rem; }
