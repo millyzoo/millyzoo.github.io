@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/12.jpg">
 <meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/13.jpg">
 <meta property="article:published_time" content="2021-01-24T17:57:30.000Z">
-<meta property="article:modified_time" content="2021-01-24T18:47:28.814Z">
+<meta property="article:modified_time" content="2021-01-25T07:17:18.807Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="Others">
 <meta property="article:tag" content="程式導師計畫">
@@ -154,7 +154,7 @@
         <span class="column is-narrow">
             
             
-            13 分钟 讀完 (約 1885 字)
+            14 分钟 讀完 (約 2153 字)
         </span>
          -->
     </div>
@@ -177,21 +177,139 @@
 <blockquote>
 <p>結論：工程師必備技能。<br>（想想看，你有看過電影裡有哪個駭客還在慢慢用 GUI 的嗎？感覺就弱掉了對吧。）</p>
 </blockquote>
-<h2 id="Command-Line-基本指令"><a href="#Command-Line-基本指令" class="headerlink" title="Command Line 基本指令"></a>Command Line 基本指令</h2><p><code>pwd</code>：顯示目前所在位置（print working directory）</p>
+<h2 id="Command-Line-常用指令"><a href="#Command-Line-常用指令" class="headerlink" title="Command Line 常用指令"></a>Command Line 常用指令</h2><h3 id="基本指令懶人包"><a href="#基本指令懶人包" class="headerlink" title="基本指令懶人包"></a>基本指令懶人包</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>英文縮寫來源</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pwd</code></td>
+<td>print working directory</td>
+<td>顯示目前所在位置</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>list</td>
+<td>列出目前資料夾底下的所有檔案</td>
+</tr>
+<tr>
+<td><code>ls-al</code></td>
+<td>list all</td>
+<td>列出詳細資料，包含檔案大小、修改時間、隱藏檔案…</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>change directory</td>
+<td>切換資料夾</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td></td>
+<td>回到上一層資料夾</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>clear</td>
+<td>清空終端機畫面</td>
+</tr>
+<tr>
+<td><code>man</code></td>
+<td>manual</td>
+<td>使用說明書</td>
+</tr>
+</tbody></table>
+<h4 id="印出所在位置"><a href="#印出所在位置" class="headerlink" title="印出所在位置"></a>印出所在位置</h4><p><code>pwd</code>：顯示目前所在位置（print working directory）</p>
 <img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/03.jpg" class="">
 
-<p><code>ls</code>：列出目前資料夾底下的所有檔案（list）</p>
+<h4 id="列出檔案清單"><a href="#列出檔案清單" class="headerlink" title="列出檔案清單"></a>列出檔案清單</h4><p><code>ls</code>：列出目前資料夾底下的所有檔案（list）</p>
 <img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/04.jpg" class="">
 
 <p><code>ls-al</code>：列出詳細資料<br>在<code>ls</code> 後面加上參數 <code>-al</code> ，會列出詳細資料，例如：檔案權限、檔案擁有者、檔案大小、最後修改時間、所有隱藏檔案。</p>
 <img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/05.jpg" class="">
 
-<p><code>cd</code>：切換資料夾（change directory）<br> <code>cd ..</code>：如果在<code>cd</code> 後面加上 <code>..</code> 的話，則能夠回到上一層資料夾</p>
+<h4 id="切換資料夾"><a href="#切換資料夾" class="headerlink" title="切換資料夾"></a>切換資料夾</h4><p><code>cd</code>：切換資料夾（change directory）<br> <code>cd ..</code>：如果在<code>cd</code> 後面加上 <code>..</code> 的話，則能夠回到上一層資料夾</p>
 <img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/06.jpg" class="">
 
 <p><code>clear</code>：清空終端機畫面，想要清空畫面的時候可以輸入這個指令。<br>（超方便！之前不知道這個指令卻又有強迫症想清空畫面，都用很笨的方法關掉再重開終端機。）</p>
-<p><code>man</code> 使用說明書（manual）<br>舉例：輸入 <code>man ls</code> 後，會列出 <code>ls</code> 的詳細用法。</p>
-<h2 id="檔案操作相關指令"><a href="#檔案操作相關指令" class="headerlink" title="檔案操作相關指令"></a>檔案操作相關指令</h2><h4 id="建立檔案或更改檔案時間"><a href="#建立檔案或更改檔案時間" class="headerlink" title="建立檔案或更改檔案時間"></a>建立檔案或更改檔案時間</h4><p><code>touch</code>：建立檔案或更改檔案時間。<br>當檔案「<strong>存在</strong>」時，輸入 <code>touch</code> 後，檔案修改時間將會更新。</p>
+<p><code>man</code>：使用說明書（manual）<br>舉例：輸入 <code>man ls</code> 後，會列出 <code>ls</code> 的詳細用法。</p>
+<h3 id="檔案操作相關指令懶人包"><a href="#檔案操作相關指令懶人包" class="headerlink" title="檔案操作相關指令懶人包"></a>檔案操作相關指令懶人包</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>英文縮寫來源</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>touch</code></td>
+<td></td>
+<td>建立檔案或更改檔案時間</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>remove</td>
+<td>刪除檔案</td>
+</tr>
+<tr>
+<td><code>rmdir 資料夾名稱</code></td>
+<td>remove directory</td>
+<td>刪除資料夾</td>
+</tr>
+<tr>
+<td><code>rm -r 資料夾名稱</code></td>
+<td></td>
+<td>刪除資料夾<strong>（慎用！）</strong></td>
+</tr>
+<tr>
+<td><code>rm -f</code></td>
+<td></td>
+<td>刪除資料夾<strong>（超危險！）</strong></td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>make directory</td>
+<td>建立資料夾</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>move</td>
+<td>移動檔案或改名</td>
+</tr>
+<tr>
+<td><code>cp</code></td>
+<td>copy</td>
+<td>複製檔案</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>date</td>
+<td>顯示當前時間</td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td>table of processes</td>
+<td>顯示所有 Process</td>
+</tr>
+<tr>
+<td><code>cat</code></td>
+<td>catenate</td>
+<td>連接檔案或把檔案內容顯示出來</td>
+</tr>
+<tr>
+<td><code>less</code></td>
+<td></td>
+<td>分頁印出檔案</td>
+</tr>
+<tr>
+<td><code>echo</code></td>
+<td></td>
+<td>印出字串</td>
+</tr>
+</tbody></table>
+<h4 id="建立檔案或更改檔案時間"><a href="#建立檔案或更改檔案時間" class="headerlink" title="建立檔案或更改檔案時間"></a>建立檔案或更改檔案時間</h4><p><code>touch</code>：建立檔案或更改檔案時間。<br>當檔案「<strong>存在</strong>」時，輸入 <code>touch</code> 後，檔案修改時間將會更新。</p>
 <img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/07.jpg" class="">
 
 <p>當檔案「<strong>不存在</strong>」時，輸入 <code>touch</code> 後，將會新增檔案。</p>
@@ -204,7 +322,7 @@
 </blockquote>
 <p><code>rm</code> 只能刪除檔案，如果想刪除資料夾的話有幾種作法：</p>
 <ul>
-<li><code>rmdir 資料夾名稱</code> ：在 <code>rm</code> 後面加上<code>dir</code></li>
+<li><code>rmdir 資料夾名稱</code>：remove directory，在 <code>rm</code> 後面加上<code>dir</code></li>
 <li><code>rm -r 資料夾名稱</code>：在 <code>rm</code> 後面加上<code>空格</code>+<code>-r</code><ul>
 <li> 若檔案本身沒有保護機制，使用 <code>rm -r</code> 指令會直接刪除資料夾及裡面的所有檔案。<strong>（慎用！）</strong><img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/10.jpg" class=""></li>
 </ul>
@@ -295,7 +413,9 @@
     
     
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Others/%E8%AA%8D%E8%AD%98%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%88%87%E5%88%9D%E7%B4%9A%20Git%20%E6%99%82%E5%85%89%E6%A9%9F/">認識版本控制與初級 Git 時光機</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
