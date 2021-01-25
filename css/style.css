@@ -95,6 +95,12 @@ a.tag.article-tag {
   a.tag.article-tag:hover {
     background-color: #dfdfdf; }
 
+@media screen and (max-width: 1023px) {
+  .navbar-brand {
+    height: 3.25rem; }
+  .navbar-menu {
+    padding: 0; } }
+
 @media screen and (min-width: 1024px) {
   .navbar .container {
     min-height: 80px; }
