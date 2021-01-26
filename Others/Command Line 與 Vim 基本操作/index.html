@@ -20,30 +20,30 @@
     <meta name="description" content="Command Line 簡單來說就是和電腦溝通的語言，而我們操作電腦的方式一般來說有兩種：  圖形使用者介面（GUI） 命令列介面（CLI）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Command Line 與 Vim 基本操作">
-<meta property="og:url" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:url" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Mily">
 <meta property="og:description" content="Command Line 簡單來說就是和電腦溝通的語言，而我們操作電腦的方式一般來說有兩種：  圖形使用者介面（GUI） 命令列介面（CLI）">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/01.png">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/02.png">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/03.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/04.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/05.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/06.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/07.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/08.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/09.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/10.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/11.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/12.jpg">
-<meta property="og:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/13.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/01.png">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/02.png">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/03.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/04.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/05.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/06.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/07.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/08.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/09.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/10.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/11.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/12.jpg">
+<meta property="og:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/13.jpg">
 <meta property="article:published_time" content="2021-01-24T17:57:30.000Z">
 <meta property="article:modified_time" content="2021-01-25T07:17:18.807Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="Others">
 <meta property="article:tag" content="程式導師計畫">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://milyzoo.github.io/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/01.png">
+<meta name="twitter:image" content="https://milyzoo.github.io/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/01.png">
 
 
 
@@ -149,7 +149,7 @@
         
         <span class="column is-narrow article-category">
             <i class="far fa-folder"></i>
-            <a class="article-category-link" href="/categories/others/">Others</a>
+            <a class="article-category-link" href="/categories/Others/">Others</a>
         </span>
         
         <!-- 
@@ -170,10 +170,10 @@
 <a id="more"></a>
 
 <h3 id="圖形使用者介面（GUI）"><a href="#圖形使用者介面（GUI）" class="headerlink" title="圖形使用者介面（GUI）"></a>圖形使用者介面（GUI）</h3><p>全名是 Graphical User Interface，是指用圖形方式顯示的電腦操作用戶介面，也是我們平常最常用來操作電腦的方式。若用更白話、簡單的方式來說，就像下圖一樣，我們要新增資料夾時，可以透過<strong>滑鼠點擊</strong>的方式來操作。</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/01.png" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/01.png" class="">
 
 <h3 id="命令列介面（CLI）"><a href="#命令列介面（CLI）" class="headerlink" title="命令列介面（CLI）"></a>命令列介面（CLI）</h3><p>全名是 Command-Line Interface，是在 GUI 普及之前最廣泛運用的<strong>使用者介面</strong>，通常不支援<strong>滑鼠</strong>，而是利用<strong>鍵盤</strong>來輸入指令，電腦接收到指令後，將會執行。</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/02.png" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/02.png" class="">
 
 <h4 id="CLI-學習理由"><a href="#CLI-學習理由" class="headerlink" title="CLI 學習理由"></a>CLI 學習理由</h4><p>對設計師、剪輯師或其他職業來說，都能使用有 GUI 的軟體來工作，但在程式開發裡，有很多工具不提供圖形介面，只能透過指令來和電腦溝通。</p>
 <blockquote>
@@ -224,16 +224,16 @@
 </tr>
 </tbody></table>
 <h4 id="印出所在位置"><a href="#印出所在位置" class="headerlink" title="印出所在位置"></a>印出所在位置</h4><p><code>pwd</code>：顯示目前所在位置（print working directory）</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/03.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/03.jpg" class="">
 
 <h4 id="列出檔案清單"><a href="#列出檔案清單" class="headerlink" title="列出檔案清單"></a>列出檔案清單</h4><p><code>ls</code>：列出目前資料夾底下的所有檔案（list）</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/04.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/04.jpg" class="">
 
 <p><code>ls-al</code>：列出詳細資料<br>在<code>ls</code> 後面加上參數 <code>-al</code> ，會列出詳細資料，例如：檔案權限、檔案擁有者、檔案大小、最後修改時間、所有隱藏檔案。</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/05.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/05.jpg" class="">
 
 <h4 id="切換資料夾"><a href="#切換資料夾" class="headerlink" title="切換資料夾"></a>切換資料夾</h4><p><code>cd</code>：切換資料夾（change directory）<br> <code>cd ..</code>：如果在<code>cd</code> 後面加上 <code>..</code> 的話，則能夠回到上一層資料夾</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/06.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/06.jpg" class="">
 
 <p><code>clear</code>：清空終端機畫面，想要清空畫面的時候可以輸入這個指令。<br>（超方便！之前不知道這個指令卻又有強迫症想清空畫面，都用很笨的方法關掉再重開終端機。）</p>
 <p><code>man</code>：使用說明書（manual）<br>舉例：輸入 <code>man ls</code> 後，會列出 <code>ls</code> 的詳細用法。</p>
@@ -312,11 +312,11 @@
 </tr>
 </tbody></table>
 <h4 id="建立檔案或更改檔案時間"><a href="#建立檔案或更改檔案時間" class="headerlink" title="建立檔案或更改檔案時間"></a>建立檔案或更改檔案時間</h4><p><code>touch</code>：建立檔案或更改檔案時間。<br>當檔案「<strong>存在</strong>」時，輸入 <code>touch</code> 後，檔案修改時間將會更新。</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/07.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/07.jpg" class="">
 
 <p>當檔案「<strong>不存在</strong>」時，輸入 <code>touch</code> 後，將會新增檔案。</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/08.jpg" class="">
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/09.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/08.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/09.jpg" class="">
 
 <h4 id="刪除檔案"><a href="#刪除檔案" class="headerlink" title="刪除檔案"></a>刪除檔案</h4><p><code>rm</code>：remove，只要輸入 <code>rm 檔案名稱</code>，即可刪除檔案。</p>
 <blockquote>
@@ -326,7 +326,7 @@
 <ul>
 <li><code>rmdir 資料夾名稱</code>：remove directory，在 <code>rm</code> 後面加上<code>dir</code></li>
 <li><code>rm -r 資料夾名稱</code>：在 <code>rm</code> 後面加上<code>空格</code>+<code>-r</code><ul>
-<li> 若檔案本身沒有保護機制，使用 <code>rm -r</code> 指令會直接刪除資料夾及裡面的所有檔案。<strong>（慎用！）</strong><img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/10.jpg" class=""></li>
+<li> 若檔案本身沒有保護機制，使用 <code>rm -r</code> 指令會直接刪除資料夾及裡面的所有檔案。<strong>（慎用！）</strong><img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/10.jpg" class=""></li>
 </ul>
 </li>
 <li><code>rm -f</code> 即使檔案有保護機制會跳出確認訊息時，使用 <code>rm -f</code> 指令一樣會無視保護機制，直接刪除檔案。<strong>（超危險！）</strong>  </li>
@@ -334,10 +334,10 @@
 <h4 id="建立資料夾"><a href="#建立資料夾" class="headerlink" title="建立資料夾"></a>建立資料夾</h4><p><code>mkdir</code>：make directory，輸入 <code>mkdir 資料夾名稱</code>，即可建立資料夾。</p>
 <h4 id="移動檔案或改名"><a href="#移動檔案或改名" class="headerlink" title="移動檔案或改名"></a>移動檔案或改名</h4><p><code>mv</code>：move，用於移動檔案或改名。</p>
 <p>移動檔案：</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/11.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/11.jpg" class="">
 
 <p>更改檔案名稱：</p>
-<img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/12.jpg" class="">
+<img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/12.jpg" class="">
 
 <h4 id="複製檔案"><a href="#複製檔案" class="headerlink" title="複製檔案"></a>複製檔案</h4><p><code>cp</code>：copy，複製檔案。</p>
 <blockquote>
@@ -375,7 +375,7 @@
 <h4 id="重新導向"><a href="#重新導向" class="headerlink" title="重新導向"></a>重新導向</h4><p><code>redirect: &gt;</code>：重新導向<br><code>redirection</code>： 重新導向 input output</p>
 <p><strong>（寫給自己看：這部分有空再回去看 [CS101] 2-4）</strong></p>
 <h2 id="Vim-文字編輯器"><a href="#Vim-文字編輯器" class="headerlink" title="Vim 文字編輯器"></a>Vim 文字編輯器</h2><p>Vim 是一款歷史悠久，並由 Vi 發展出來的文字編輯器，也是 <strong>Git</strong> 預設的編輯器。<br>雖然目前已有許多文字編輯器能夠使用，例如：VS Code、Sublime Text 等，但很多人在使用 Git 過程中，可能會不小心進入這個編輯器，而這個編輯器的使用方式相較其他文字編輯器來說比較特別，需要透過特定指令才能達到輸入文字、存檔，甚至是離開的動作。</p>
-<h3 id="Vim-的基本操作"><a href="#Vim-的基本操作" class="headerlink" title="Vim 的基本操作"></a>Vim 的基本操作</h3><img src="/others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/13.jpg" class="">
+<h3 id="Vim-的基本操作"><a href="#Vim-的基本操作" class="headerlink" title="Vim 的基本操作"></a>Vim 的基本操作</h3><img src="/Others/Command%20Line%20%E8%88%87%20Vim%20%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/13.jpg" class="">
 
 <h4 id="常用模式"><a href="#常用模式" class="headerlink" title="常用模式"></a>常用模式</h4><p>Vim 至少有超過五種以上的模式能夠應用，這邊只簡單介紹三種最常使用的模式：</p>
 <ul>
@@ -417,12 +417,12 @@
     <div class="columns is-mobile is-multiline article-nav">
         <span class="column is-12-mobile is-half-desktop  article-nav-prev">
             
-            <a href="/others/%E8%AA%8D%E8%AD%98%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%88%87%20Git%20%E6%99%82%E5%85%89%E6%A9%9F/">認識版本控制與 Git 時光機</a>
+            <a href="/Others/%E8%AA%8D%E8%AD%98%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%88%87%20Git%20%E6%99%82%E5%85%89%E6%A9%9F/">認識版本控制與 Git 時光機</a>
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
             
-            <a href="/others/%E5%9F%BA%E7%A4%8E%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE%E2%80%93Terminal%E3%80%81Git/">基礎環境建置 – Terminal、Git</a>
+            <a href="/Others/%E5%9F%BA%E7%A4%8E%E7%92%B0%E5%A2%83%E5%BB%BA%E7%BD%AE%E2%80%93Terminal%E3%80%81Git/">基礎環境建置 – Terminal、Git</a>
             
         </span>
     </div>
