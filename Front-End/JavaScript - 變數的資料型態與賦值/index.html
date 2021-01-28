@@ -25,7 +25,7 @@
 <meta property="og:description" content="目錄 什麼是變數 變數的資料型別">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-01-27T07:49:38.000Z">
-<meta property="article:modified_time" content="2021-01-28T06:01:52.077Z">
+<meta property="article:modified_time" content="2021-01-28T06:05:59.187Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="程式導師計畫">
 <meta property="article:tag" content="JavaScript">
@@ -142,7 +142,7 @@
         <span class="column is-narrow">
             
             
-            11 分钟 讀完 (約 1705 字)
+            11 分钟 讀完 (約 1724 字)
         </span>
          -->
     </div>
@@ -180,7 +180,7 @@
 <li>symbol</li>
 </ul>
 </li>
-<li>object 物件</li>
+<li>Object 物件</li>
 </ul>
 <p>Primitive Type 和 object 的差別之一：Primitive Type 是 Immutable（不可改變的）</p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Primitive Type 不可改變</span></span><br><span class="line"><span class="hljs-keyword">let</span> str = <span class="hljs-string">'hello'</span></span><br><span class="line">str.toUpperCase() <span class="hljs-comment">//這一行回傳的是新的值，而不是改變舊的自己</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(str) <span class="hljs-comment">// 印出 hello</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// object 可以改變</span></span><br><span class="line"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>]</span><br><span class="line">arr.push(<span class="hljs-number">2</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr) <span class="hljs-comment">// 印出 [1, 2]</span></span><br></pre></td></tr></tbody></table></figure>
@@ -230,7 +230,13 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="object-物件"><a href="#object-物件" class="headerlink" title="object 物件"></a>object 物件</h3><p>object（array, function, date…）</p>
+<h3 id="Object-物件"><a href="#Object-物件" class="headerlink" title="Object 物件"></a>Object 物件</h3><ul>
+<li>Object 物件</li>
+<li>Array 陣列</li>
+<li>Function 函式</li>
+<li>Date</li>
+<li>… 除了基本型別 (Primitives) 以外的值都是物件</li>
+</ul>
 <h2 id="檢測變數的型別"><a href="#檢測變數的型別" class="headerlink" title="檢測變數的型別"></a>檢測變數的型別</h2><ul>
 <li><code>typeof</code><ul>
 <li><code>Array.isArray([])</code>（因為 <code>typeof</code> 沒辦法辨識 <code>array</code>，就可以使用這個語法來判斷 <code>array</code>）</li>
