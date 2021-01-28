@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<!-- <html class="has-navbar-fixed-top"> -->
+<head>
+    <meta charset="utf-8">
+<title>JavaScript - 宣告變數的方式與作用域（Scope） - Mily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="早期宣告變數都使用 var 來宣告，但自從 ES6 出現後，多了兩個新選擇：const（宣告常數）及 let（宣告變數）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript - 宣告變數的方式與作用域（Scope）">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E5%AE%A3%E5%91%8A%E8%AE%8A%E6%95%B8%E7%9A%84%E6%96%B9%E5%BC%8F%E8%88%87%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89/index.html">
+<meta property="og:site_name" content="Mily">
+<meta property="og:description" content="早期宣告變數都使用 var 來宣告，但自從 ES6 出現後，多了兩個新選擇：const（宣告常數）及 let（宣告變數）">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-01-28T07:39:39.000Z">
+<meta property="article:modified_time" content="2021-01-28T15:04:05.271Z">
+<meta property="article:author" content="Mily">
+<meta property="article:tag" content="程式導師計畫">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    
+<nav class="navbar is-transparent navbar-main" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation"> -->
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                Mily
+                <!-- 
+                <img src="/images/logo.png" alt="" height="28">
+                 -->
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-end">
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item "
+                   href="/archives">全文列表</a>
+                
+                <a class="navbar-item "
+                   href="/categories">文章分類</a>
+                
+            </div>
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
+        
+            JavaScript - 宣告變數的方式與作用域（Scope）
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2021-01-28T07:39:39.000Z" itemprop="datePublished">1月 28 2021</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+        </span>
+        
+        <!-- 
+        <span class="column is-narrow">
+            
+            
+            8 分钟 讀完 (約 1235 字)
+        </span>
+         -->
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>早期宣告變數都使用 <code>var</code> 來宣告，但自從 ES6 出現後，多了兩個新選擇：<code>const</code>（宣告常數）及 <code>let</code>（宣告變數）</p>
+<a id="more"></a>
+
+<h2 id="var-與-let、const-的差別"><a href="#var-與-let、const-的差別" class="headerlink" title="var 與 let、const 的差別"></a><code>var</code> 與 <code>let</code>、<code>const</code> 的差別</h2><blockquote>
+<p>問題：ES6 後才出現的 <code>let</code> 和 ES6 之前的 <code>var</code> 有什麼差別呢？</p>
+</blockquote>
+<p><code>var</code> 與 <code>let</code>、<code>const</code> 最大的差別就是 <strong>作用域（Scope）的定義不同</strong>。<br><code>var</code> 的作用域範圍是 Function Scope。<br><code>let</code> 或 <code>const</code> 的作用域範圍是 Block Scope，所謂的 Block Scope 就是變數的作用範圍只存在兩個大括號 <code>{ }</code> 中。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>作用域</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>var</code></td>
+<td>Function Scope</td>
+<td><code>function { }</code></td>
+</tr>
+<tr>
+<td><code>let</code> 與 <code>const</code></td>
+<td>Block Scope</td>
+<td><code>{ }</code></td>
+</tr>
+</tbody></table>
+<p><strong>（給自己看：有空再補圖解）</strong></p>
+<h2 id="常數-const"><a href="#常數-const" class="headerlink" title="常數 - const"></a>常數 - <code>const</code></h2><p>const（constant）是常數，值是<strong>不能改變</strong>的，且一定要先給初始值，不可事後才給</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 值是不能改變的</span></span><br><span class="line"><span class="hljs-keyword">const</span> b = <span class="hljs-number">20</span></span><br><span class="line">b = <span class="hljs-number">30</span></span><br><span class="line"><span class="hljs-comment">// 會有錯誤提示 TypeError: Assignment to constant variable</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 一定要先給初始值，不可事後才給</span></span><br><span class="line"><span class="hljs-keyword">const</span> b</span><br><span class="line">b = <span class="hljs-number">30</span></span><br><span class="line"><span class="hljs-comment">// 會有錯誤提示 SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> obj = {</span><br><span class="line">  number: <span class="hljs-number">1</span></span><br><span class="line">}</span><br><span class="line">obj.number = <span class="hljs-number">2</span></span><br><span class="line"><span class="hljs-comment">// 不會有錯誤提示，因為記憶體位置一樣</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> obj2 = {</span><br><span class="line">  number: <span class="hljs-number">1</span></span><br><span class="line">}</span><br><span class="line">obj2 = { <span class="hljs-attr">number</span>: <span class="hljs-number">2</span> }</span><br><span class="line"><span class="hljs-comment">// 會有錯誤提示 TypeError: Assignment to constant variable</span></span><br><span class="line"><span class="hljs-comment">// 記憶體位置改變，代表值也換了</span></span><br></pre></td></tr></tbody></table></figure>
+<p>關於記憶體位置，可以參考之前寫的 <a href="/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#Object">JavaScript - 變數的資料型別與賦值</a> 其中 Object 的內容</p>
+<h2 id="變數-var-與-let"><a href="#變數-var-與-let" class="headerlink" title="變數 - var 與 let"></a>變數 - <code>var</code> 與 <code>let</code></h2><p>目前宣告變數的方式有兩種，<code>var</code>（variable）以及 <code>let</code>，兩者最大的差別是<strong>Scope（作用域）</strong></p>
+<h3 id="什麼是-Scope（作用域）？"><a href="#什麼是-Scope（作用域）？" class="headerlink" title="什麼是 Scope（作用域）？"></a>什麼是 Scope（作用域）？</h3><p>作用域簡單來說是<strong>變數的生存範圍</strong></p>
+<h4 id="先談-ES6-以前的作用域"><a href="#先談-ES6-以前的作用域" class="headerlink" title="先談 ES6 以前的作用域"></a>先談 ES6 以前的作用域</h4><p>在 ES6 出現前只能使用 <code>var</code> 來宣告，其作用範圍是 Function Scope，只有 <code>function</code> 可以產生新的作用域。<br>這是什麼意思呢？來看看範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 印出 10</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 會出現 ReferenceError: a is not defined（未定義）</span></span><br></pre></td></tr></tbody></table></figure>
+<p>因為 <code>a</code> 宣告在 <code>function</code> 裡面，<code>a</code> 只有在這個函式裡面，才能被大家看見，所以一旦離開函式，就會找不到 <code>a</code> 的變數宣告。</p>
+<blockquote>
+<p>問題：如果變數宣告在外面呢？</p>
+</blockquote>
+<p>變數宣告在外面的話即是 <strong>global variable 全域變數</strong>，代表所有人都看得見它。<br>而作用域的特性是<strong>從內層開始往外層找</strong>，當在 <code>test()</code> 裡面找不到 <code>a</code> 的宣告時，就會往上一層找，便能找到全域變數的 <code>a</code>，所以 <code>console.log(a)</code> 就能順利顯示。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 印出 10</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 印出 10</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其他範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 印出 10</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 印出 20</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>特別要注意的範例</strong><br>這段程式碼的執行順序：<br>執行 <code>test()</code> &gt; 找到 <code>test function</code> &gt; 函式裡面沒有宣告 <code>a</code><br>&gt; 往外找到 <code>var a = 20</code> 並帶入函式 &gt; 用賦值去改變 <code>a</code> &gt; 所以 <code>a</code> 已經被改變成 <code>10</code></p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  a = <span class="hljs-number">10</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 印出 10</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 印出 10</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果沒有宣告變數，JavaScript 會自動把 <code>a</code> 轉成全域變數，但這樣容易出現 bug，不建議這樣做</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  a = <span class="hljs-number">10</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 印出 10</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 印出 10</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Scope chain（範圍鏈）就是指<strong>變數從最裡面往外找</strong>的行為</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-string">'global'</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-string">'test scope a'</span></span><br><span class="line">  <span class="hljs-keyword">var</span> b = <span class="hljs-string">'test scope b'</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a, b)</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">    <span class="hljs-keyword">var</span> b = <span class="hljs-string">'inner scope b'</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(a, b)</span><br><span class="line">  }</span><br><span class="line">  inner()</span><br><span class="line">}</span><br><span class="line">test()</span><br><span class="line"><span class="hljs-built_in">console</span>.log(a)</span><br><span class="line"><span class="hljs-comment">// 印出：</span></span><br><span class="line"><span class="hljs-comment">// test scope a test scope b</span></span><br><span class="line"><span class="hljs-comment">// test scope a inner scope b</span></span><br><span class="line"><span class="hljs-comment">// global</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Scope（作用域）容易把和其他觀念混淆之處：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-string">'global'</span> <span class="hljs-comment">// global scope</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">change</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// change scope</span></span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span></span><br><span class="line">  test()</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">// test scope</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">change() <span class="hljs-comment">// 最後會印出 global</span></span><br></pre></td></tr></tbody></table></figure>
+<p>關於 <code>test()</code> 的範圍鏈：</p>
+<ul>
+<li>初學者以為的是 test scope -&gt;  change scope -&gt;  global scope <strong>（錯誤）</strong></li>
+<li>正確的範圍鏈是 test scope -&gt; global scope</li>
+</ul>
+<p><code>change()</code> 和 <code>test()</code> 是平行世界， <strong>在哪裡呼叫沒有關係</strong></p>
+<h4 id="ES6-出現後的作用域"><a href="#ES6-出現後的作用域" class="headerlink" title="ES6 出現後的作用域"></a>ES6 出現後的作用域</h4><p>以下使用 <code>var</code> 為範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">60</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (a === <span class="hljs-number">60</span>) {</span><br><span class="line">    <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span></span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(b)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 印出 10</span></span><br></pre></td></tr></tbody></table></figure>
+<p>接下來改以 <code>let</code> 宣告測試：<br>因為 <code>b</code> 只存在 <code>if (a === 60) { }</code> 的判斷式裡面，所以在外面的 <code>console.log(b)</code> 就找不到 <code>b</code></p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">60</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (a === <span class="hljs-number">60</span>) {</span><br><span class="line">    <span class="hljs-keyword">let</span> b = <span class="hljs-number">10</span></span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(b)</span><br><span class="line">}</span><br><span class="line">test() <span class="hljs-comment">// 會有錯誤提示 ReferenceError: b is not defined</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其他範例：<br>當 <code>i</code> 變成 <code>3</code> 時，就不符合條件而跳出迴圈，所以最外面的 <code>final value</code> 即會得到 <code>3</code></p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'i:'</span>, i)</span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'final value:'</span>, i)</span><br><span class="line">}</span><br><span class="line">test()</span><br><span class="line"><span class="hljs-comment">// 印出：</span></span><br><span class="line"><span class="hljs-comment">// i: 0</span></span><br><span class="line"><span class="hljs-comment">// i: 1</span></span><br><span class="line"><span class="hljs-comment">// i: 2</span></span><br><span class="line"><span class="hljs-comment">// final value: 3</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果改成 <code>let</code>，因為 <code>i</code> 只存在 <code>for</code> 迴圈裡面，一跳出迴圈就會變成未定義的變數：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'i:'</span>, i)</span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'final value:'</span>, i)</span><br><span class="line">}</span><br><span class="line">test()</span><br><span class="line"><span class="hljs-comment">// 印出：</span></span><br><span class="line"><span class="hljs-comment">// i: 0</span></span><br><span class="line"><span class="hljs-comment">// i: 1</span></span><br><span class="line"><span class="hljs-comment">// i: 2</span></span><br><span class="line"><span class="hljs-comment">// ReferenceError: b is not defined</span></span><br></pre></td></tr></tbody></table></figure>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Lidemy/">#程式導師計畫</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Front-End/JavaScript%20-%20==%20%E8%88%87%20===%20%E7%9A%84%E5%B7%AE%E5%88%A5/">JavaScript - == 與 === 的差別</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="has-text-centered">
+        &copy; 2021 <a href="https://github.com/milyzoo" target="_blank">Mily</a> All Rights Reserved. 
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
