@@ -25,7 +25,7 @@
 <meta property="og:description" content="目錄 什麼是變數 undefined 與 defined   變數的資料型別">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-01-27T07:49:38.000Z">
-<meta property="article:modified_time" content="2021-02-20T12:28:15.431Z">
+<meta property="article:modified_time" content="2021-02-20T14:50:38.024Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="程式導師計畫">
 <meta property="article:tag" content="JavaScript">
@@ -142,18 +142,18 @@
         <span class="column is-narrow">
             
             
-            13 分钟 讀完 (約 1916 字)
+            13 分钟 讀完 (約 2024 字)
         </span>
          -->
     </div>
     <div class="article-entry is-size-6-mobile" itemprop="articleBody">
     
         <html><head></head><body><h4 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h4><ul>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E4%BB%80%E9%BA%BC%E6%98%AF%E8%AE%8A%E6%95%B8">什麼是變數</a><ul>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#undefined-%E8%88%87-defined">undefined 與 defined</a></li>
+<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC/#%E4%BB%80%E9%BA%BC%E6%98%AF%E8%AE%8A%E6%95%B8">什麼是變數</a><ul>
+<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC/#undefined-%E8%88%87-defined">undefined 與 defined</a></li>
 </ul>
 </li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5">變數的資料型別</a><a id="more"></a>
+<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC/#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5">變數的資料型別</a><a id="more"></a>
 <ul>
 <li><a href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5%EF%BC%88Primitive-Type%EF%BC%89">原始型別（Primitive Type）</a><ul>
 <li><a href="#NaN-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F">NaN 是什麼</a></li>
@@ -282,18 +282,20 @@
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> arr = []</span><br><span class="line"><span class="hljs-keyword">let</span> arr2 = arr</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 []</span></span><br><span class="line">arr2.push(<span class="hljs-string">'arr2'</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 ['arr2', 'arr2']</span></span><br></pre></td></tr></tbody></table></figure>
 <p><strong>小陷阱：</strong></p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> arr = []</span><br><span class="line"><span class="hljs-keyword">let</span> arr2 = arr</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 []</span></span><br><span class="line">arr2 = [<span class="hljs-string">'arr2'</span>] <span class="hljs-comment">// 賦值原理：['arr2'] 是放在新的記憶體位置，此時 arr2 存取的記憶體位置和 arr 不同了</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 [] [ 'arr2' ]</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="LHS-與-RHS"><a href="#LHS-與-RHS" class="headerlink" title="LHS 與 RHS"></a>LHS 與 RHS</h3><h4 id="LHS（Left-hand-side）"><a href="#LHS（Left-hand-side）" class="headerlink" title="LHS（Left hand side）"></a>LHS（Left hand side）</h4><p>LHS：賦值到左側的變數上</p>
+<h3 id="LHS-與-RHS"><a href="#LHS-與-RHS" class="headerlink" title="LHS 與 RHS"></a>LHS 與 RHS</h3><p>LHS 及 RHS 字面上的意思是左手邊（Left hand side）、右手邊（Right hand side），亦可以直接理解成賦值操作的左側與右側。</p>
+<h4 id="LHS"><a href="#LHS" class="headerlink" title="LHS"></a>LHS</h4><p>LHS（Left hand side）：賦值到左側的變數上</p>
 <blockquote>
 <p>可以記成：請幫我去查這個變數的位置在哪裡，因為我要對它賦值。</p>
 </blockquote>
-<p>當 <code>'Mily'</code> 這個值賦予到左邊的變數上時，就是 <strong>LHS</strong></p>
+<p>這裡對 <code>name</code> 而言是 LHS 引用，因為我們的目的是把 <code>a</code> 賦值成 <code>2</code></p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> name = <span class="hljs-string">'Mily'</span></span><br></pre></td></tr></tbody></table></figure>
-<h4 id="RHS（Right-hand-side）"><a href="#RHS（Right-hand-side）" class="headerlink" title="RHS（Right hand side）"></a>RHS（Right hand side）</h4><p>RHS：取值來自於右側的變數上</p>
+<h4 id="RHS"><a href="#RHS" class="headerlink" title="RHS"></a>RHS</h4><p>RHS（Right hand side）：取值來自於右側的變數上</p>
 <blockquote>
 <p>可以記成：請幫我查詢這個變數的值是什麼，因為我要用這個值。</p>
 </blockquote>
-<p>右邊的值 <code>18</code> 就是使用 RHS 取得變數</p>
-<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> age = <span class="hljs-number">18</span></span><br></pre></td></tr></tbody></table></figure>
+<p>此處 a 是一個 RHS 引用，因為 a 沒有賦值，我們的目的是為了取到 a 的值並用 <code>console.log</code> 印出。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(a);</span><br></pre></td></tr></tbody></table></figure>
+<p>（詳細 LHS 與 RHS 的解釋可參考：<a target="_blank" rel="noopener" href="https://savokiss.com/tech/JS-LHS-RHS.html">快速理解 JavaScript 中的 LHS 和 RHS 查询</a>）</p>
 <h2 id="變數運算小陷阱"><a href="#變數運算小陷阱" class="headerlink" title="變數運算小陷阱"></a>變數運算小陷阱</h2><p>在使用變數做運算時，初學者容易忽略的陷阱有兩個，一是<strong>型別</strong>，二是<strong>浮點數誤差</strong>。</p>
 <h3 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h3><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-keyword">let</span> b = <span class="hljs-string">'20'</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a + b) <span class="hljs-comment">// 印出 1020，因為 b 是字串，所以不會印出 30</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="浮點數誤差"><a href="#浮點數誤差" class="headerlink" title="浮點數誤差"></a>浮點數誤差</h3><p>電腦在儲存小數點時沒有辦法真的很精準，所以會導致運算結果有些許誤差。</p>
@@ -301,7 +303,11 @@
 <p>為什麼是 <strong>false</strong> 呢？<br>我們把 a 拆解來看，會發現<strong>奇妙的誤差</strong>，因此在使用小數點時需特別注意，或盡量減少使用小數點。</p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 印出 0.3000000004</span></span><br></pre></td></tr></tbody></table></figure>
 <hr>
-<p>參考：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10190873">重新認識 JavaScript: Day 03 變數與資料型別</a></p>
+<p>參考資料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10190873">重新認識 JavaScript: Day 03 變數與資料型別</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.huli.tw/2018/11/10/javascript-hoisting-and-tdz/">我知道你懂 hoisting，可是你了解到多深？</a></li>
+</ul>
 </body></html>
     
     </div>
