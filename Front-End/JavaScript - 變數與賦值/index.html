@@ -3,7 +3,7 @@
 <!-- <html class="has-navbar-fixed-top"> -->
 <head>
     <meta charset="utf-8">
-<title>JavaScript - 變數的資料型別與賦值 - Mily</title>
+<title>JavaScript - 變數與賦值 - Mily</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
@@ -19,13 +19,13 @@
 
     <meta name="description" content="目錄 什麼是變數 undefined 與 defined   變數的資料型別">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript - 變數的資料型別與賦值">
-<meta property="og:url" content="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/index.html">
+<meta property="og:title" content="JavaScript - 變數與賦值">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC/index.html">
 <meta property="og:site_name" content="Mily">
 <meta property="og:description" content="目錄 什麼是變數 undefined 與 defined   變數的資料型別">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-01-27T07:49:38.000Z">
-<meta property="article:modified_time" content="2021-02-19T10:46:13.835Z">
+<meta property="article:modified_time" content="2021-02-20T12:28:15.431Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="程式導師計畫">
 <meta property="article:tag" content="JavaScript">
@@ -125,7 +125,7 @@
     <article class="article content gallery" itemscope itemprop="blogPost">
     <h1 class="article-title is-size-4-mobile" itemprop="name">
         
-            JavaScript - 變數的資料型別與賦值
+            JavaScript - 變數與賦值
         
     </h1>
     <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
@@ -142,7 +142,7 @@
         <span class="column is-narrow">
             
             
-            13 分钟 讀完 (約 1994 字)
+            13 分钟 讀完 (約 1916 字)
         </span>
          -->
     </div>
@@ -150,26 +150,27 @@
     
         <html><head></head><body><h4 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h4><ul>
 <li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E4%BB%80%E9%BA%BC%E6%98%AF%E8%AE%8A%E6%95%B8">什麼是變數</a><ul>
-<li><a href="">undefined 與 defined</a></li>
+<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#undefined-%E8%88%87-defined">undefined 與 defined</a></li>
 </ul>
 </li>
 <li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5">變數的資料型別</a><a id="more"></a>
 <ul>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5%EF%BC%88Primitive-Type%EF%BC%89">原始型別（Primitive Type）</a><ul>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#NaN-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F">NaN 是什麼</a></li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%B7-NaN">如何判斷 NaN</a></li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E4%BB%80%E9%BA%BC%E7%8B%80%E6%B3%81%E6%9C%83%E5%87%BA%E7%8F%BE-NaN-%E5%91%A2%EF%BC%9F">#什麼狀況會出現 NaN 呢？</a></li>
+<li><a href="#%E5%8E%9F%E5%A7%8B%E5%9E%8B%E5%88%A5%EF%BC%88Primitive-Type%EF%BC%89">原始型別（Primitive Type）</a><ul>
+<li><a href="#NaN-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F">NaN 是什麼</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%B7-NaN">如何判斷 NaN</a></li>
+<li><a href="#%E4%BB%80%E9%BA%BC%E7%8B%80%E6%B3%81%E6%9C%83%E5%87%BA%E7%8F%BE-NaN-%E5%91%A2%EF%BC%9F">#什麼狀況會出現 NaN 呢？</a></li>
 </ul>
 </li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#object-%E7%89%A9%E4%BB%B6">object 物件</a></li>
+<li><a href="#object-%E7%89%A9%E4%BB%B6">object 物件</a></li>
 </ul>
 </li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E6%AA%A2%E6%B8%AC%E8%AE%8A%E6%95%B8%E7%9A%84%E5%9E%8B%E5%88%A5">檢測變數的型別</a></li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E8%B3%A6%E5%80%BC">賦值 <code>=</code></a><ul>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC%E5%8E%9F%E7%90%86">變數與賦值原理</a></li>
+<li><a href="#%E6%AA%A2%E6%B8%AC%E8%AE%8A%E6%95%B8%E7%9A%84%E5%9E%8B%E5%88%A5">檢測變數的型別</a></li>
+<li><a href="#%E8%B3%A6%E5%80%BC">賦值 <code>=</code></a><ul>
+<li><a href="#%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC%E5%8E%9F%E7%90%86">變數與賦值原理</a></li>
+<li><a href="#LHS-%E8%88%87-RHS">LHS 與 RHS</a></li>
 </ul>
 </li>
-<li><a href="https://milyzoo.github.io/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E7%9A%84%E8%B3%87%E6%96%99%E5%9E%8B%E6%85%8B%E8%88%87%E8%B3%A6%E5%80%BC/#%E8%AE%8A%E6%95%B8%E9%81%8B%E7%AE%97%E5%B0%8F%E9%99%B7%E9%98%B1">變數運算小陷阱</a></li>
+<li><a href="#%E8%AE%8A%E6%95%B8%E9%81%8B%E7%AE%97%E5%B0%8F%E9%99%B7%E9%98%B1">變數運算小陷阱</a></li>
 </ul>
 <h2 id="什麼是變數"><a href="#什麼是變數" class="headerlink" title="什麼是變數"></a>什麼是變數</h2><p>可以將變數想像成「<strong>一個能夠裝東西的箱子</strong>」，我們可以幫這個箱子命名（例如：<code>box</code>），箱內能儲存一些東西，這樣就可以用我們命名的 <code>box</code> 來代指箱子裡所儲存的東西。</p>
 <h3 id="undefined-與-defined"><a href="#undefined-與-defined" class="headerlink" title="undefined 與 defined"></a>undefined 與 defined</h3><p>有宣告變數卻沒有賦值的話，n 的值會變成 <strong>undefined</strong></p>
@@ -281,6 +282,18 @@
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> arr = []</span><br><span class="line"><span class="hljs-keyword">let</span> arr2 = arr</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 []</span></span><br><span class="line">arr2.push(<span class="hljs-string">'arr2'</span>)</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 ['arr2', 'arr2']</span></span><br></pre></td></tr></tbody></table></figure>
 <p><strong>小陷阱：</strong></p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> arr = []</span><br><span class="line"><span class="hljs-keyword">let</span> arr2 = arr</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 []</span></span><br><span class="line">arr2 = [<span class="hljs-string">'arr2'</span>] <span class="hljs-comment">// 賦值原理：['arr2'] 是放在新的記憶體位置，此時 arr2 存取的記憶體位置和 arr 不同了</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr, arr2) <span class="hljs-comment">// 印出 [] [ 'arr2' ]</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="LHS-與-RHS"><a href="#LHS-與-RHS" class="headerlink" title="LHS 與 RHS"></a>LHS 與 RHS</h3><h4 id="LHS（Left-hand-side）"><a href="#LHS（Left-hand-side）" class="headerlink" title="LHS（Left hand side）"></a>LHS（Left hand side）</h4><p>LHS：賦值到左側的變數上</p>
+<blockquote>
+<p>可以記成：請幫我去查這個變數的位置在哪裡，因為我要對它賦值。</p>
+</blockquote>
+<p>當 <code>'Mily'</code> 這個值賦予到左邊的變數上時，就是 <strong>LHS</strong></p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> name = <span class="hljs-string">'Mily'</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="RHS（Right-hand-side）"><a href="#RHS（Right-hand-side）" class="headerlink" title="RHS（Right hand side）"></a>RHS（Right hand side）</h4><p>RHS：取值來自於右側的變數上</p>
+<blockquote>
+<p>可以記成：請幫我查詢這個變數的值是什麼，因為我要用這個值。</p>
+</blockquote>
+<p>右邊的值 <code>18</code> 就是使用 RHS 取得變數</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> age = <span class="hljs-number">18</span></span><br></pre></td></tr></tbody></table></figure>
 <h2 id="變數運算小陷阱"><a href="#變數運算小陷阱" class="headerlink" title="變數運算小陷阱"></a>變數運算小陷阱</h2><p>在使用變數做運算時，初學者容易忽略的陷阱有兩個，一是<strong>型別</strong>，二是<strong>浮點數誤差</strong>。</p>
 <h3 id="型別"><a href="#型別" class="headerlink" title="型別"></a>型別</h3><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-keyword">let</span> b = <span class="hljs-string">'20'</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(a + b) <span class="hljs-comment">// 印出 1020，因為 b 是字串，所以不會印出 30</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="浮點數誤差"><a href="#浮點數誤差" class="headerlink" title="浮點數誤差"></a>浮點數誤差</h3><p>電腦在儲存小數點時沒有辦法真的很精準，所以會導致運算結果有些許誤差。</p>
