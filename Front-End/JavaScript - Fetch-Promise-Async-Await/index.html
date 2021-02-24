@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<!-- <html class="has-navbar-fixed-top"> -->
+<head>
+    <meta charset="utf-8">
+<title>JavaScript - Fetch/Promise/Async/Await - Mily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="在學習 ES6 以前，發出請求就需要藉由 XMLHttpRequest() 的方式執行，但現在已經有操作更直覺方便的方法了，那就是：Fetch。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript - Fetch&#x2F;Promise&#x2F;Async&#x2F;Await">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/JavaScript%20-%20Fetch-Promise-Async-Await/index.html">
+<meta property="og:site_name" content="Mily">
+<meta property="og:description" content="在學習 ES6 以前，發出請求就需要藉由 XMLHttpRequest() 的方式執行，但現在已經有操作更直覺方便的方法了，那就是：Fetch。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-01-27T10:50:20.000Z">
+<meta property="article:modified_time" content="2021-02-24T08:53:57.031Z">
+<meta property="article:author" content="Mily">
+<meta property="article:tag" content="程式導師計畫">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    
+<nav class="navbar is-transparent navbar-main" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation"> -->
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                Mily
+                <!-- 
+                <img src="/images/logo.png" alt="" height="28">
+                 -->
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-end">
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item "
+                   href="/archives">全文列表</a>
+                
+                <a class="navbar-item "
+                   href="/categories">文章分類</a>
+                
+            </div>
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
+        
+            JavaScript - Fetch/Promise/Async/Await
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2021-01-27T10:50:20.000Z" itemprop="datePublished">1月 27 2021</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+        </span>
+        
+        <!-- 
+        <span class="column is-narrow">
+            
+            
+            10 分钟 讀完 (約 1558 字)
+        </span>
+         -->
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>在學習 ES6 以前，發出請求就需要藉由 <code>XMLHttpRequest()</code> 的方式執行，但現在已經有操作更直覺方便的方法了，那就是：<strong>Fetch</strong>。</p>
+<a id="more"></a>
+
+<h2 id="Fetch-基本介紹"><a href="#Fetch-基本介紹" class="headerlink" title="Fetch 基本介紹"></a>Fetch 基本介紹</h2><ul>
+<li>可取代傳統的 XMLHttpRequest</li>
+<li>Fetch 是 ES6 的新語法</li>
+<li>可以接收跨站的 cookies，能用 Fetch 來建立跨站的 session</li>
+<li>不會傳送 cookies，除非有額外設定</li>
+<li>如果請求得到回應，回傳的是帶有 Response 的 Promise 物件</li>
+</ul>
+<blockquote>
+<p>傳統的 XMLHttpRequest 範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> API_URL = <span class="hljs-string">'https://exsample.com/example/1'</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> request = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">// 定義 Http request</span></span><br><span class="line"></span><br><span class="line">request.open(<span class="hljs-string">'GET'</span>, API_URL); <span class="hljs-comment">// 定義方法（GET：讀取資料／POST：傳送資料至伺服器）</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 當請求完成，則開始執行以下函式</span></span><br><span class="line">request.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">if</span> (request.status &gt;= <span class="hljs-number">200</span> &amp;&amp; request.status &lt; <span class="hljs-number">400</span>) {</span><br><span class="line">    <span class="hljs-comment">// 成功就列出結果</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(request.response);</span><br><span class="line">  } <span class="hljs-keyword">else</span> {</span><br><span class="line">    <span class="hljs-comment">// 失敗處理</span></span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">request.send(); <span class="hljs-comment">// 送出請求</span></span><br></pre></td></tr></tbody></table></figure>
+</blockquote>
+<h3 id="Fetch-基本用法"><a href="#Fetch-基本用法" class="headerlink" title="Fetch 基本用法"></a>Fetch 基本用法</h3><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="hljs-string">'http://example.com/movies.json'</span>) <span class="hljs-comment">// 使用 fetch() 發出 request</span></span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{ <span class="hljs-comment">// 利用 then() 取得 response</span></span><br><span class="line">    <span class="hljs-keyword">return</span> response.json(); <span class="hljs-comment">// 需透過 json()、text() 轉成可以使用的資訊</span></span><br><span class="line">  })</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">myJson</span>) </span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(myJson); <span class="hljs-comment">// 得到的 json</span></span><br><span class="line">  });</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p><code>then()</code> 的規則是裡面要放入 function</p>
+</blockquote>
+<h3 id="Fetch-的-Request-設定值"><a href="#Fetch-的-Request-設定值" class="headerlink" title="Fetch 的 Request 設定值"></a>Fetch 的 Request 設定值</h3><p>Fetch 常用的 Request 屬性包含：</p>
+<table>
+<thead>
+<tr>
+<th>屬性</th>
+<th>設定值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>body</td>
+<td>要加到要求中的內容（如果 method 為 GET 或 HEAD 則不設定）</td>
+</tr>
+<tr>
+<td>url</td>
+<td>第一個參數，一定要填的項目，代表需要 fetch 對象的網址</td>
+</tr>
+<tr>
+<td>method</td>
+<td>GET、POST、PUT、DELETE、HEAD（預設 GET）</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>要求相關的 Headers 物件（預設 {}）</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>ors、no-cors、same-origin、navigate（預設 cors）</td>
+</tr>
+<tr>
+<td>referrer</td>
+<td>no-referrer、client 或某個網址（預設 client）</td>
+</tr>
+<tr>
+<td>credentials</td>
+<td>omit、same-origin、include（預設 omit）</td>
+</tr>
+<tr>
+<td>redirect</td>
+<td>default、no-store、reload、no-cache、force-cache（預設 default）</td>
+</tr>
+<tr>
+<td>cache</td>
+<td>第一個參數，一定要填的項目，代表需要 fetch 對象的網址</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>表格取自 <a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201908/js-fetch.html">JavaScript Fetch API 使用教學</a></p>
+</blockquote>
+<h4 id="實戰-Fetch-加入-Request-設定值（以帶入-header-和-method-為範例）"><a href="#實戰-Fetch-加入-Request-設定值（以帶入-header-和-method-為範例）" class="headerlink" title="實戰 Fetch 加入 Request 設定值（以帶入 header 和 method 為範例）"></a>實戰 Fetch 加入 Request 設定值（以帶入 header 和 method 為範例）</h4><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="hljs-string">'https://exsample.com/example/'</span>, {</span><br><span class="line">  body: <span class="hljs-built_in">JSON</span>.stringify(data), <span class="hljs-comment">// must match 'Content-Type' header</span></span><br><span class="line">  headers: {</span><br><span class="line">    <span class="hljs-string">'user-agent'</span>: <span class="hljs-string">'Mozilla/4.0 MDN Example'</span>,</span><br><span class="line">    <span class="hljs-string">'content-type'</span>: <span class="hljs-string">'application/json'</span></span><br><span class="line">  },</span><br><span class="line">  method: <span class="hljs-string">'POST'</span>, <span class="hljs-comment">// 若沒有寫 method 就是默認 GET</span></span><br><span class="line">  })</span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json()) <span class="hljs-comment">// 需透過 json()、text() 轉成可以使用的資訊</span></span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {</span><br><span class="line">    <span class="hljs-keyword">return</span> callback(data)</span><br><span class="line">  })</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Fetch-的-Response-方法"><a href="#Fetch-的-Response-方法" class="headerlink" title="Fetch 的 Response 方法"></a>Fetch 的 Response 方法</h3><p>以下僅列出幾種 Fetch 常用的 Response 方法，更多方法請參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/docs/Web/API/Response">fetch Response</a></p>
+<ul>
+<li><code>json()</code></li>
+<li><code>text()</code></li>
+<li><code>blob()</code></li>
+<li>…</li>
+</ul>
+<h2 id="Promise-是什麼？"><a href="#Promise-是什麼？" class="headerlink" title="Promise 是什麼？"></a>Promise 是什麼？</h2><p>Promise 本身是一個建構函式，是用來優化處理非同步行為的語法。</p>
+<p>一般來說，處理非同步事件，除了使用 CallBack 以外，也能使用 Promise 來處理，且 Promise 的可讀性與後續維護都優於 CallBack。</p>
+<h3 id="Promise-的狀態"><a href="#Promise-的狀態" class="headerlink" title="Promise 的狀態"></a>Promise 的狀態</h3><p>當拿到 Promise（承諾） 時，會有幾種狀態發生：</p>
+<ul>
+<li>Pending，得不到回應（事件運行中，尚未取得結果）</li>
+<li>Resolve，承諾實現（事件執行完畢且成功操作）</li>
+<li>Reject，承諾被拒絕（事件執行完畢卻操作失敗）</li>
+</ul>
+<blockquote>
+<p>就算是 Resolve 或 Reject 狀態，也必定會經過 Pending</p>
+</blockquote>
+<h2 id="製作自己的-Promise"><a href="#製作自己的-Promise" class="headerlink" title="製作自己的 Promise"></a>製作自己的 Promise</h2><h3 id="Promise-程式碼懶人包"><a href="#Promise-程式碼懶人包" class="headerlink" title="Promise 程式碼懶人包"></a>Promise 程式碼懶人包</h3><p>一個基本的 <code>Promise</code> 長這樣：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> newPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">  resolve(status) <span class="hljs-comment">// 成功時回傳   </span></span><br><span class="line">  reject(status) <span class="hljs-comment">// 失敗時回傳</span></span><br><span class="line">}).then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {</span><br><span class="line">   <span class="hljs-comment">// 用 then 來做行為成功的處理</span></span><br><span class="line">}).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {</span><br><span class="line">   <span class="hljs-comment">// 用 catch 來做失敗的處理</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="開始製作"><a href="#開始製作" class="headerlink" title="開始製作"></a>開始製作</h3><h4 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h4><p>類似物件導向，Promise 需要先 new 出物件才能使用原型方法（<code>then()</code>、<code>catch()</code>、<code>finally()</code>）</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span>(<span class="hljs-params">resolve, reject</span>) </span>{</span><br><span class="line">  resolve(status) <span class="hljs-comment">// 成功時回傳</span></span><br><span class="line">  reject(status) <span class="hljs-comment">// 失敗時回傳</span></span><br><span class="line">}</span><br><span class="line"><span class="hljs-keyword">const</span> myPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(init);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>函式內傳入的 resolve 跟 reject 也是函式</li>
+<li>resolve 是執行成功後會執行的函式；reject 則是失敗後所執行的函式</li>
+<li>resolve 及 reject 可以自定名稱，但大多數開發者習慣維持此名稱</li>
+</ul>
+<h4 id="實際測試"><a href="#實際測試" class="headerlink" title="實際測試"></a>實際測試</h4><p>Promise 可以使用 <code>then()</code> 取得成功的結果；使用 <code>catch()</code> 取得成功或失敗的結果</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span>(<span class="hljs-params">resolve, reject</span>) </span>{</span><br><span class="line">  resolve(<span class="hljs-number">3</span>)</span><br><span class="line">  reject(<span class="hljs-number">4</span>)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> myPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(init);</span><br><span class="line"></span><br><span class="line">myPromise.then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'data'</span>, data)</span><br><span class="line">}).catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'error'</span>, err)</span><br><span class="line">  <span class="hljs-comment">// 用 catch 來做失敗的處理</span></span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 實測後將得到 data3</span></span><br></pre></td></tr></tbody></table></figure>
+<p>特別要注意的是，<code>resolve()</code> 及 <code>reject()</code> 互相衝突，就算兩者同時寫，也只會跑入 <code>.then()</code> 或 <code>.catch()</code> 其中之一的函式，並不會兩者都執行</p>
+<h4 id="簡化程式碼"><a href="#簡化程式碼" class="headerlink" title="簡化程式碼"></a>簡化程式碼</h4><p>上述程式碼進行簡化，簡化方式為直接將 init funtion 放進 new Promise，並改成箭頭函式</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> myPromise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">  resolve(<span class="hljs-number">3</span>)</span><br><span class="line">  reject(<span class="hljs-number">4</span>)</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">myPromise.then(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'data'</span>, data)</span><br><span class="line">}).catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'error'</span>, err)</span><br><span class="line">  <span class="hljs-comment">// 用 catch 來做失敗的處理</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="達成最終目標"><a href="#達成最終目標" class="headerlink" title="達成最終目標"></a>達成最終目標</h4><p>根據上述程式碼，即可完成自製 Promise</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myPromise.then(<span class="hljs-function">() =&gt;</span> {</span><br><span class="line"></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="其他補充"><a href="#其他補充" class="headerlink" title="其他補充"></a>其他補充</h4><p>使用 <code>fetch()</code> 會得到 =&gt; Promise<br><code>response.text()</code> 也是得到 =&gt; Promise<br><code>response.json()</code> 也是得到 =&gt; Promise</p>
+<blockquote>
+<p>Promise 本身是一個建構函式</p>
+</blockquote>
+<hr>
+<h2 id="Async、Await-是什麼？"><a href="#Async、Await-是什麼？" class="headerlink" title="Async、Await 是什麼？"></a>Async、Await 是什麼？</h2><p>Async、Await 需搭配 Promise 語法使用，能寫出類似同步行為的程式碼，而實際上仍是非同步的語法，使程式碼更直覺易讀。</p>
+<blockquote>
+<p>用法：在 function 前面加入 <code>async</code>，在非同步的 Promise 函數前面加上 <code>await</code></p>
+</blockquote>
+<h3 id="版本對照"><a href="#版本對照" class="headerlink" title="版本對照"></a>版本對照</h3><h4 id="範例一"><a href="#範例一" class="headerlink" title="範例一"></a>範例一</h4><p>Promise 版本</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mainPromise</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'enter main'</span>)</span><br><span class="line">  sleep(<span class="hljs-number">1000</span>).then(<span class="hljs-function">() =&gt;</span> {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'exit main'</span>)</span><br><span class="line">  })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Async、Await 版本</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'enter main'</span>)</span><br><span class="line">  <span class="hljs-keyword">await</span> sleep(<span class="hljs-number">1000</span>)</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'exit main'</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>使用 Async、Await 以後，也能搭配 <code> try...catch</code> 語法來做錯誤處理</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'enter main'</span>)</span><br><span class="line">  <span class="hljs-keyword">await</span> sleep(<span class="hljs-number">1000</span>)</span><br><span class="line">  <span class="hljs-keyword">try</span> {</span><br><span class="line">    <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> getData()</span><br><span class="line">  } <span class="hljs-keyword">catch</span>(err) {</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'錯誤：'</span> + err)</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'result'</span>)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="範例二"><a href="#範例二" class="headerlink" title="範例二"></a>範例二</h4><p>Promise 版本</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStreams</span>(<span class="hljs-params">gameName</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> fetch(<span class="hljs-string">'http://example.com/movies.json'</span>, {</span><br><span class="line">    headers: {</span><br><span class="line">      <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/example'</span>,</span><br><span class="line">      <span class="hljs-string">'Client-ID'</span>: <span class="hljs-string">'XXXX'</span></span><br><span class="line">    }</span><br><span class="line">  }) <span class="hljs-comment">// 沒有寫 method 就是默認 GET</span></span><br><span class="line">  .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.json()) <span class="hljs-comment">// 這邊 return 的是用 then() 以後得到的一個 promise</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Async、Await 版本</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStreams</span>(<span class="hljs-params">gameName</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">'http://example.com/movies.json'</span>, {</span><br><span class="line">    headers: {</span><br><span class="line">      <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/example'</span>,</span><br><span class="line">      <span class="hljs-string">'Client-ID'</span>: <span class="hljs-string">'XXXX'</span></span><br><span class="line">    }</span><br><span class="line">  }) <span class="hljs-comment">// 沒有寫 method 就是默認 GET</span></span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> response.json()</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="重點補充"><a href="#重點補充" class="headerlink" title="重點補充"></a>重點補充</h2><ul>
+<li>有 Promise 就不會有 callback，除非用的 library 不支援</li>
+<li>用了 async/await，通常就不會有 <code>.then</code> 跟 <code>.catch</code> 了</li>
+</ul>
+<hr>
+<p>參考資料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/docs/Web/API/Fetch_API">MDN - Fetch</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.oxxostudio.tw/articles/201908/js-fetch.html">JavaScript Fetch API 使用教學</a></li>
+<li><a target="_blank" rel="noopener" href="https://wcc723.github.io/development/2020/02/16/all-new-promise/">JavaScript Promise 全介紹</a></li>
+</ul>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Lidemy/">#程式導師計畫</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Front-End/JavaScript%20-%20==%20%E8%88%87%20===%20%E7%9A%84%E5%B7%AE%E5%88%A5/">JavaScript - == 與 === 的差別</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC/">JavaScript - 變數與賦值</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="has-text-centered">
+        &copy; 2021 <a href="https://github.com/milyzoo" target="_blank">Mily</a> All Rights Reserved. 
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>

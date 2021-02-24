@@ -25,7 +25,7 @@
 <meta property="og:description" content="之前在 《JavaScript - 宣告變數的方式與作用域（Scope）》 中提到變數有作用域的特性，這次則要來認識 Hoisting（提升）。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2021-01-29T07:01:42.000Z">
-<meta property="article:modified_time" content="2021-02-23T17:05:28.781Z">
+<meta property="article:modified_time" content="2021-02-23T19:30:13.190Z">
 <meta property="article:author" content="Mily">
 <meta property="article:tag" content="程式導師計畫">
 <meta property="article:tag" content="JavaScript">
@@ -142,7 +142,7 @@
         <span class="column is-narrow">
             
             
-            10 分钟 讀完 (約 1564 字)
+            11 分钟 讀完 (約 1724 字)
         </span>
          -->
     </div>
@@ -156,8 +156,9 @@
 <li><a href="#Function-%E4%BD%94%E6%9C%89%E5%84%AA%E5%85%88%E6%AC%8A">Function 佔有優先權</a></li>
 </ul>
 </li>
+<li><a href="#Hoisting-%E5%A5%BD%E6%96%87%E6%8E%A8%E8%96%A6">Hoisting 好文推薦</a></li>
 <li><a href="#let-%E8%88%87-const-%E7%9A%84%E8%A9%AD%E7%95%B0%E8%A1%8C%E7%82%BA">let 與 const 的詭異行為</a><ul>
-<li><a href="#let-Hoisting-%E7%9A%84%E6%96%B9%E5%BC%8F"><code>let</code> Hoisting 的方式</a></li>
+<li><a href="#let-%E6%8F%90%E5%8D%87%E7%9A%84%E6%96%B9%E5%BC%8F"><code>let</code> 提升的方式</a></li>
 </ul>
 </li>
 </ul>
@@ -208,17 +209,23 @@
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callName</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Mily'</span>)</span><br><span class="line">}</span><br><span class="line">callName();</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callName</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Lily'</span>)</span><br><span class="line">}</span><br><span class="line">callName();</span><br><span class="line"><span class="hljs-comment">// 回傳：</span></span><br><span class="line"><span class="hljs-comment">// Lily</span></span><br><span class="line"><span class="hljs-comment">// Lily</span></span><br></pre></td></tr></tbody></table></figure>
 <p>最後小練習：</p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1.'</span>, a); <span class="hljs-comment">// 1. undefined，因為函式有最高優先權，就會整段跑到 var a = 1 的上面</span></span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">7</span>;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2.'</span>, a); <span class="hljs-comment">// 2. 7</span></span><br><span class="line">  a++; <span class="hljs-comment">// 7 + 1 = 8</span></span><br><span class="line">  <span class="hljs-keyword">var</span> a;</span><br><span class="line">  inner();</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'4.'</span>, a); <span class="hljs-comment">// 4. 30</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>)</span>{</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3.'</span>, a); <span class="hljs-comment">// 3. 8</span></span><br><span class="line">    a = <span class="hljs-number">30</span>;</span><br><span class="line">    b = <span class="hljs-number">200</span>;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">test();</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'5.'</span>, a); <span class="hljs-comment">// 5. 1</span></span><br><span class="line">a = <span class="hljs-number">70</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'6.'</span>, a); <span class="hljs-comment">// 6. 70</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'7.'</span>, b); <span class="hljs-comment">// 7. 200</span></span><br></pre></td></tr></tbody></table></figure>
-<p>這次學習時看到這篇<a target="_blank" rel="noopener" href="https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248">《秒懂！JavaSript 執行環境與堆疊》</a>執行環境 （Execution context）講解得很清楚</p>
-<h2 id="let-與-const-的詭異行為"><a href="#let-與-const-的詭異行為" class="headerlink" title="let 與 const 的詭異行為"></a>let 與 const 的詭異行為</h2><p>上述提到的 Hoisting，都是用 <code>var</code> 來宣告</p>
+<h2 id="Hoisting-好文推薦"><a href="#Hoisting-好文推薦" class="headerlink" title="Hoisting 好文推薦"></a>Hoisting 好文推薦</h2><p>這次學習 Hoisting 時，除了本篇文章提到的這些重點以外，還學習了 JavaSript 執行環境、運作方式。<br>雖然沒有針對執行環境寫筆記，為防以後複習時需要，這邊先附上讓我受益良多的文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/%E9%AD%94%E9%AC%BC%E8%97%8F%E5%9C%A8%E7%A8%8B%E5%BC%8F%E7%B4%B0%E7%AF%80%E8%A3%A1/%E6%B7%BA%E8%AB%87-javascript-%E5%9F%B7%E8%A1%8C%E7%92%B0%E5%A2%83-2976b3eaf248">《秒懂！JavaSript 執行環境與堆疊》</a></li>
+<li><a target="_blank" rel="noopener" href="https://yakimhsu.com/project/project_w17_advancedJS_01_EC.html">[第十七週] JavaScript 進階：打好基礎的第一步，從了解什麼是 EC 開始</a></li>
+<li><a target="_blank" rel="noopener" href="https://yakimhsu.com/project/project_w17_advancedJS_02_Hoisting.html">[第十七週] JavaScript 進階：從 EC 來理解 Hoisting</a></li>
+</ul>
+<h2 id="let-與-const-的詭異行為"><a href="#let-與-const-的詭異行為" class="headerlink" title="let 與 const 的詭異行為"></a>let 與 const 的詭異行為</h2><p>上述提到的 Hoisting，都是用 <code>var</code> 來宣告，接著來看看 <code>let</code> 與 <code>const</code>。</p>
+<p>原本用 <code>var</code> 宣告：</p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 回傳 undefined</span></span><br><span class="line"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span></span><br></pre></td></tr></tbody></table></figure>
 <p>如果改成 <code>let</code> 宣告呢？<br>以下面的範例來看，可能會讓人以為 <code>let</code> 沒有 Hoisting 的行為。</p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 回傳 a is not defined</span></span><br><span class="line"><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span></span><br></pre></td></tr></tbody></table></figure>
 <p>其實 <code>let</code> 是有 Hoisting 的，只是 Hoisting 的方式和我們想像中的不同。<br>怎麼說呢？按照以下的範例來說：</p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">  <span class="hljs-keyword">let</span> a = <span class="hljs-number">30</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">test() <span class="hljs-comment">// 回傳 a is not defined</span></span><br></pre></td></tr></tbody></table></figure>
-<p>如果 <code>let</code> 沒有 Hoisting 的話，就會變成接收到最外層 <code>let a = 10</code> 的參數來回傳 <code>10</code> 才對，可是這邊卻得到 <code>a is not defined</code></p>
-<h3 id="let-Hoisting-的方式"><a href="#let-Hoisting-的方式" class="headerlink" title="let Hoisting 的方式"></a><code>let</code> Hoisting 的方式</h3><p>如果是使用 <code>var</code> 宣告的話，賦值以前，變數會初始成 <code>undefined</code></p>
+<p>如果 <code>let</code> 沒有 Hoisting 的話，就會變成接收到最外層 <code>let a = 10</code> 的參數來回傳 <code>10</code> 才對，可是這邊卻得到 <code>a is not defined</code>，由此可證 <code>let</code> 是有 Hoisting 的。</p>
+<h3 id="let-提升的方式"><a href="#let-提升的方式" class="headerlink" title="let 提升的方式"></a>let 提升的方式</h3><p>如果是使用 <code>var</code> 宣告的話，賦值以前，變數會初始成 <code>undefined</code></p>
 <figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">  <span class="hljs-keyword">var</span> a = <span class="hljs-number">30</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">test()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 上述程式碼提升後：</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">var</span> a <span class="hljs-comment">// a = undefined</span></span><br><span class="line">  <span class="hljs-built_in">console</span>.log(a)</span><br><span class="line">  <span class="hljs-comment">// ... TDZ</span></span><br><span class="line">  <span class="hljs-comment">// ... TDZ</span></span><br><span class="line">  <span class="hljs-comment">// ... TDZ</span></span><br><span class="line">  a = <span class="hljs-number">30</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">test()</span><br></pre></td></tr></tbody></table></figure>
-<p>而使用 <code>let</code> 宣告的話就不一樣了，在賦值以前都是無法存取 <code>a</code> 的，如果嘗試存取就會出現 ReferenceError！<br>在提升後，到賦值前的這段期間就叫做 <strong>TDZ</strong>（Temporal Dead Zone，亦稱暫時性死區）。</p>
+<p>使用 <code>let</code> 宣告的話就不一樣了，<strong>在賦值以前都是無法存取變數的</strong>，如果嘗試存取就會出現 ReferenceError！<br>而提升後，直到賦值之前的這段期間就叫做 <strong>TDZ</strong>（Temporal Dead Zone，亦稱暫時性死區）。</p>
 <hr>
 <p>參考資料：</p>
 <ul>
@@ -239,9 +246,7 @@
     
     
     <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/Front-End/JavaScript%20%E6%98%AF%E5%A6%82%E4%BD%95%E9%81%8B%E8%A1%8C%E7%9A%84/">JavaScript 是如何運行的</a>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
             
         </span>
         <span class="column is-12-mobile is-half-desktop  article-nav-next">
