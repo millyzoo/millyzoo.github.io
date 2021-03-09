@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<!-- <html class="has-navbar-fixed-top"> -->
+<head>
+    <meta charset="utf-8">
+<title>React 基礎：React 中使用 CSS 的方式 - Mily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="React 使用 CSS 的方式有幾種：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 基礎：React 中使用 CSS 的方式">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AReact-%E4%B8%AD%E4%BD%BF%E7%94%A8-CSS-%E7%9A%84%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Mily">
+<meta property="og:description" content="React 使用 CSS 的方式有幾種：">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AReact-%E4%B8%AD%E4%BD%BF%E7%94%A8-CSS-%E7%9A%84%E6%96%B9%E5%BC%8F/01.png">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AReact-%E4%B8%AD%E4%BD%BF%E7%94%A8-CSS-%E7%9A%84%E6%96%B9%E5%BC%8F/02.png">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AReact-%E4%B8%AD%E4%BD%BF%E7%94%A8-CSS-%E7%9A%84%E6%96%B9%E5%BC%8F/03.png">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AReact-%E4%B8%AD%E4%BD%BF%E7%94%A8-CSS-%E7%9A%84%E6%96%B9%E5%BC%8F/04.png">
+<meta property="article:published_time" content="2021-03-08T13:45:01.000Z">
+<meta property="article:modified_time" content="2021-03-09T15:27:40.191Z">
+<meta property="article:author" content="Mily">
+<meta property="article:tag" content="程式導師計畫">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AReact-%E4%B8%AD%E4%BD%BF%E7%94%A8-CSS-%E7%9A%84%E6%96%B9%E5%BC%8F/01.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    
+<nav class="navbar is-transparent navbar-main" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation"> -->
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                Mily
+                <!-- 
+                <img src="/images/logo.png" alt="" height="28">
+                 -->
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-end">
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item "
+                   href="/archives">全文列表</a>
+                
+                <a class="navbar-item "
+                   href="/categories">文章分類</a>
+                
+            </div>
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
+        
+            React 基礎：React 中使用 CSS 的方式
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2021-03-08T13:45:01.000Z" itemprop="datePublished">3月 8 2021</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+        </span>
+        
+        <!-- 
+        <span class="column is-narrow">
+            
+            
+            9 分钟 讀完 (約 1355 字)
+        </span>
+         -->
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>React 使用 CSS 的方式有幾種：</p>
+<a id="more"></a>
+<ol>
+<li>inline-style</li>
+<li>使用 webpack 打包</li>
+<li>styled-components 套件</li>
+</ol>
+<h3 id="將變數傳入-JSX"><a href="#將變數傳入-JSX" class="headerlink" title="將變數傳入 JSX"></a>將變數傳入 JSX</h3><p>在開始講解 React 撰寫 CSS 的方式前，先來了解該怎麼將變數傳入 JSX。<br>使用的方式很簡單，我們宣告一個名為 <code>name</code> 的變數，並在 JSX 中透過<strong>將其名稱包在大括號中</strong>，即可使用。<br>以下範例取自<a target="_blank" rel="noopener" href="https://zh-hant.reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx">官方文件</a>：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> name = <span class="hljs-string">'Josh Perez'</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> element = <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>; <span class="hljs-comment">// 將變數名稱包在大括號 {} 中</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="1-inline-style"><a href="#1-inline-style" class="headerlink" title="1. inline-style"></a>1. inline-style</h2><p>使用 inline-style 的方式有幾點需注意：</p>
+<ul>
+<li>無法使用偽元素或 <code>:hover</code> 等效果。</li>
+<li>CSS 屬性需改用駝峰式命名（因為是用 JavaScript 的方式撰寫）。</li>
+<li>屬性分隔需使用逗號（因為是 JS 物件）</li>
+</ul>
+<p>傳一個包含 CSS 屬性的 obeject：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> titleStyle = {</span><br><span class="line">  color: <span class="hljs-string">'red'</span>,</span><br><span class="line">  rextAlign: <span class="hljs-string">'center'</span> <span class="hljs-comment">// 駝峰式命名</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Title</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;h2 style={titleStyle}&gt;hello&lt;/h2&gt;</span><br><span class="line">  )  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>一般來說可以省略宣告，直接把 obeject 放入 JSX：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Title</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    <span class="hljs-comment">// 第一個 {} 是將變數傳入 JSX 的方法</span></span><br><span class="line">    <span class="hljs-comment">// 第二個 {} 是物件（要傳入的內容）</span></span><br><span class="line">    &lt;h2 style={{</span><br><span class="line">      color: <span class="hljs-string">'blue'</span>,</span><br><span class="line">      textAlign: <span class="hljs-string">'center'</span></span><br><span class="line">    }}&gt;hello&lt;/h2&gt;</span><br><span class="line">  )  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="2-使用-webpack-打包"><a href="#2-使用-webpack-打包" class="headerlink" title="2. 使用 webpack 打包"></a>2. 使用 webpack 打包</h2><p><code>class</code> 是 JS 的保留字，所以在 JSX 的語法中，無法直接傳入 <code>class</code>，需改為 <code>classNane</code> 當作標籤的屬性。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 以下內容寫在 App.js</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">      &lt;Title /&gt;</span><br><span class="line">      &lt;Description /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>瀏覽器便會自動 render 成 class 名稱</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* 瀏覽器渲染後 */</span></span><br><span class="line">&lt;div class="App"&gt;</span><br><span class="line">  &lt;<span class="hljs-selector-tag">h1</span>&gt;<span class="hljs-selector-tag">hello</span>&lt;/<span class="hljs-selector-tag">h1</span>&gt;</span><br><span class="line">  &lt;<span class="hljs-selector-tag">p</span>&gt;歡迎光臨&lt;/<span class="hljs-selector-tag">p</span>&gt;</span><br><span class="line">&lt;/<span class="hljs-selector-tag">div</span>&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>而因為 webpack 的關係，所以可以直接引入 CSS 檔案</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">'./App.css'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>最後只要在 <code>App.css</code> 裡面撰寫內容即可！</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.App</span> {</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#eee</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>同理，除了 CSS 以外，只要修改 webpack 設定，也能改成 SASS/SCSS 等撰寫方式。</p>
+<h2 id="3-styled-components-套件"><a href="#3-styled-components-套件" class="headerlink" title="3. styled-components 套件"></a>3. styled-components 套件</h2><p><a target="_blank" rel="noopener" href="https://styled-components.com/">styled components</a> 是 React 可以使用的一個 library，撰寫方式使用 ES6 的標籤模版（tagged template），是目前滿主流的用法。</p>
+<blockquote>
+<p>tagged template 可以參考 PJCHENder 大大的文章：<a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></p>
+</blockquote>
+<p>首先，先安裝 styled-components，安裝方式取自<a target="_blank" rel="noopener" href="https://styled-components.com/docs/basics#installation">官網文件</a></p>
+<figure class="highlight plain hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 使用 npm 安裝</span><br><span class="line">npm install --save styled-components</span><br><span class="line"></span><br><span class="line"># 使用 yarn 安裝</span><br><span class="line">yarn add styled-components</span><br></pre></td></tr></tbody></table></figure>
+<p>將 styled-components 引入</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 以下內容寫在 App.js</span></span><br><span class="line"><span class="hljs-keyword">import</span> styled <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>安裝套件及引入後，就可以開始撰寫 CSS 了！<br>宣告一個名為 <code>Description</code> 的變數，這個變數可以想成：擁有 style 樣式的 p 標籤</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Description = styled.p<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  display: inline-block;</span></span><br><span class="line"><span class="hljs-string">  padding: 10px;</span></span><br><span class="line"><span class="hljs-string">  border: 1px solid black;</span></span><br><span class="line"><span class="hljs-string">  color: blue;</span></span><br><span class="line"><span class="hljs-string">  font-size: 30px;</span></span><br><span class="line"><span class="hljs-string">`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;Description&gt; <span class="hljs-comment">// 定義完後就可以使用</span></span><br><span class="line">      歡迎光臨</span><br><span class="line">    &lt;/Description&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>瀏覽器 render 後的畫面：<br><img src="01.png"></p>
+<p>使用開發者工具查看，可以發現 styled-components 自動產生亂數 class 名稱：<br><img src="02.png"><br><img src="03.png"></p>
+<p>styled-components 寫 CSS 的方式有點像 SCSS，如果要寫 <code>:hover</code> 效果或是底下的其他標籤可以這麼寫：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Description = styled.p<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  display: inline-block;</span></span><br><span class="line"><span class="hljs-string">  padding: 10px;</span></span><br><span class="line"><span class="hljs-string">  border: 1px solid black;</span></span><br><span class="line"><span class="hljs-string">  color: blue;</span></span><br><span class="line"><span class="hljs-string">  font-size: 30px;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  &amp;:hover {</span></span><br><span class="line"><span class="hljs-string">    color: red;</span></span><br><span class="line"><span class="hljs-string">  }</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  span {</span></span><br><span class="line"><span class="hljs-string">    color: green;</span></span><br><span class="line"><span class="hljs-string">  }</span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="styled-components-參數傳遞"><a href="#styled-components-參數傳遞" class="headerlink" title="styled-components 參數傳遞"></a>styled-components 參數傳遞</h3><p>styled-components 可以搭配 props 來接受參數，藉次改變 CSS 樣式。<br>三元運算子的範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> TodoContent = styled.div<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  color: rgba(2, 40, 77);</span></span><br><span class="line"><span class="hljs-string">  font-size: <span class="hljs-subst">${props =&gt; props.size === <span class="hljs-string">'XL'</span> ? <span class="hljs-string">'20px'</span> : <span class="hljs-string">'12px'</span>}</span></span></span><br><span class="line"><span class="hljs-string">`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">      &lt;TodoItemWrapper&gt;</span><br><span class="line">        &lt;TodoContent size=<span class="hljs-string">"XL"</span>&gt;I am todo&lt;/TodoContent&gt;</span><br><span class="line">      &lt;/TodoItemWrapper&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>短路範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> TodoContent = styled.div<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  color: rgba(2, 40, 77);</span></span><br><span class="line"><span class="hljs-string">  font-size: 12px;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  <span class="hljs-subst">${props =&gt; props.size === <span class="hljs-string">'XL'</span> &amp;&amp; <span class="hljs-string">`</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-string">    font-size: 20px;</span></span></span></span><br><span class="line"><span class="hljs-string"><span class="hljs-subst"><span class="hljs-string">  `</span>}</span></span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<p>開啟開發者工具來檢查，會發現樣式已經被覆蓋掉了。<br><img src="04.png"></p>
+<h3 id="建立-component"><a href="#建立-component" class="headerlink" title="建立 component"></a>建立 component</h3><p>較常見的做法是會建立 component 來使用</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TodoItem</span> (<span class="hljs-params">{ size, content }</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;TodoItemWrapper&gt;</span><br><span class="line">      &lt;TodoContent size={size}&gt;{ content }&lt;/TodoContent&gt;</span><br><span class="line">      &lt;TodoButtonWrapper&gt;</span><br><span class="line">        &lt;Button&gt;已完成&lt;/Button&gt;</span><br><span class="line">        &lt;Button&gt;刪除&lt;/Button&gt;</span><br><span class="line">      &lt;/TodoButtonWrapper&gt;</span><br><span class="line">    &lt;/TodoItemWrapper&gt;</span><br><span class="line">  )</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">      &lt;TodoItem content={<span class="hljs-string">"測試一"</span>} /&gt;</span><br><span class="line">      &lt;TodoItem content={<span class="hljs-number">123</span>} size=<span class="hljs-string">"XL"</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="樣式繼承"><a href="#樣式繼承" class="headerlink" title="樣式繼承"></a>樣式繼承</h3><figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 原本</span></span><br><span class="line"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  padding: 10px;</span></span><br><span class="line"><span class="hljs-string">  color: #333;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  &amp; + &amp; {</span></span><br><span class="line"><span class="hljs-string">    margin-left: 15px;</span></span><br><span class="line"><span class="hljs-string">  }</span></span><br><span class="line"><span class="hljs-string">`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 重新定義</span></span><br><span class="line"><span class="hljs-keyword">const</span> RedButton = styled(Button)<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  color: blue;</span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果是對 component 做 restyle，就要傳入 <code>className</code></p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TodoItem</span> (<span class="hljs-params">{ className, size, content }</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;TodoItemWrapper className={className}&gt;</span><br><span class="line">      &lt;TodoContent size={size}&gt;{ content }&lt;/TodoContent&gt;</span><br><span class="line">      &lt;TodoButtonWrapper&gt;</span><br><span class="line">        &lt;Button&gt;已完成&lt;/Button&gt;</span><br><span class="line">        &lt;Button&gt;刪除&lt;/Button&gt;</span><br><span class="line">      &lt;/TodoButtonWrapper&gt;</span><br><span class="line">    &lt;/TodoItemWrapper&gt;</span><br><span class="line">  )</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// BlackTodoItem 會變成一個 className</span></span><br><span class="line"><span class="hljs-keyword">const</span> BlackTodoItem = styled(TodoItem)<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  background: black;</span></span><br><span class="line"><span class="hljs-string">`</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">      &lt;TodoItem content={<span class="hljs-string">"測試一"</span>} /&gt;</span><br><span class="line">      <span class="hljs-comment">// 使用 BlackTodoItem</span></span><br><span class="line">      &lt;BlackTodoItem content={<span class="hljs-number">123</span>} size=<span class="hljs-string">"XL"</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Media-Query"><a href="#Media-Query" class="headerlink" title="Media Query"></a>Media Query</h3><p>基本寫法：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  padding: 10px;</span></span><br><span class="line"><span class="hljs-string">  color: #333;</span></span><br><span class="line"><span class="hljs-string">  font-size: 20px;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  @media screen and (min-width: 768px) {</span></span><br><span class="line"><span class="hljs-string">    font-size: 16px;</span></span><br><span class="line"><span class="hljs-string">  }</span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<p>因為 Media Query 使用率高，建議直接寫成獨立檔案再引入，較便於重複使用。<br>首先，放在路徑：<code>src/constants/breakpoint.js </code>，並在裡面寫入：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MEDIA_QUERY_MD = <span class="hljs-string">'@media screen and (min-width: 768px)'</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MEDIA_QUERY_LG = <span class="hljs-string">'@media screen and (min-width: 1000px)'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>這樣即可在 <code>App.js</code> 引入並使用：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 引入</span></span><br><span class="line"><span class="hljs-keyword">import</span> { MEDIA_QUERY_MD, MEDIA_QUERY_LG} <span class="hljs-keyword">from</span> <span class="hljs-string">'./constants/breakpoint'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> Button = styled.button<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  padding: 10px;</span></span><br><span class="line"><span class="hljs-string">  color: #333;</span></span><br><span class="line"><span class="hljs-string">  font-size: 20px;</span></span><br><span class="line"><span class="hljs-string"></span></span><br><span class="line"><span class="hljs-string">  <span class="hljs-subst">${MEDIA_QUERY_MD}</span> {</span></span><br><span class="line"><span class="hljs-string">    font-size: 16px;</span></span><br><span class="line"><span class="hljs-string">  }</span></span><br><span class="line"><span class="hljs-string">  </span></span><br><span class="line"><span class="hljs-string">  <span class="hljs-subst">${MEDIA_QUERY_LG}</span> {</span></span><br><span class="line"><span class="hljs-string">    font-size: 12px;</span></span><br><span class="line"><span class="hljs-string">  }</span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="使用-Sass-變數"><a href="#使用-Sass-變數" class="headerlink" title="使用 Sass 變數"></a>使用 Sass 變數</h3><p>先在 <code>index.js</code> 引入 ThemeProvider，並宣告變數：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 引入</span></span><br><span class="line"><span class="hljs-keyword">import</span> { ThemeProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">'styled-components'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 宣告變數（theme 可自訂名稱）</span></span><br><span class="line"><span class="hljs-keyword">const</span> theme = {</span><br><span class="line">  colors: {</span><br><span class="line">    red_300: <span class="hljs-string">'#ffb9b9'</span>,</span><br><span class="line">    red_400: <span class="hljs-string">'#ff9595'</span>,</span><br><span class="line">    red_500: <span class="hljs-string">'#ff7373'</span>,</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="hljs-comment">// 用 ThemeProvider 包住 App 並傳入 theme 參數</span></span><br><span class="line">  &lt;ThemeProvider theme={theme}&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;/ThemeProvider&gt;,</span><br><span class="line">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+<p>接著就可以回到 <code>App.js</code> 使用：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> TodoContent = styled.div<span class="hljs-string">`</span></span><br><span class="line"><span class="hljs-string">  color: <span class="hljs-subst">${props =&gt; props.theme.colors.red_300}</span>;</span></span><br><span class="line"><span class="hljs-string">  font-size: 12px;</span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="component-獨立檔案"><a href="#component-獨立檔案" class="headerlink" title="component 獨立檔案"></a>component 獨立檔案</h3><p>當專案變大時，會變得不好管理，所以可以將一些 component 獨立出來使用。<br>範例：<br>建立一個 <code>TodoItem.js</code> 的檔案，將 todolist 的東西放進去，並用 export 指派函式。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TodoItem</span> (<span class="hljs-params">{ className, size, content }</span>) </span>{</span><br><span class="line">  <span class="hljs-comment">// ... 內容省略</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>回到 <code>App.js</code> 引入</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> TodoItem <span class="hljs-keyword">from</span> <span class="hljs-string">'./TodoItem'</span></span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>參考資料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://yakimhsu.com/project/project_w21_05_React_basic_CSS.html">[第二十一週] React 基礎：如何寫 CSS</a></li>
+</ul>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Lidemy/">#程式導師計畫</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/React/">#React</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Front-End/JavaScript%20-%20this/">JavaScript - this</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="has-text-centered">
+        &copy; 2021 <a href="https://github.com/milyzoo" target="_blank">Mily</a> All Rights Reserved. 
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
