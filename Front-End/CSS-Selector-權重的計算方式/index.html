@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<!-- <html class="has-navbar-fixed-top"> -->
+<head>
+    <meta charset="utf-8">
+<title>CSS Selector 權重的計算方式 - Mily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="在談論 CSS Selector 權重的「計算方式」之前，我們先來了解 CSS Selector 的優先權。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Selector 權重的計算方式">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/CSS-Selector-%E6%AC%8A%E9%87%8D%E7%9A%84%E8%A8%88%E7%AE%97%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Mily">
+<meta property="og:description" content="在談論 CSS Selector 權重的「計算方式」之前，我們先來了解 CSS Selector 的優先權。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/CSS-Selector-%E6%AC%8A%E9%87%8D%E7%9A%84%E8%A8%88%E7%AE%97%E6%96%B9%E5%BC%8F/01.png">
+<meta property="article:published_time" content="2021-01-27T05:43:19.000Z">
+<meta property="article:modified_time" content="2021-05-16T05:59:11.948Z">
+<meta property="article:author" content="Mily">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="程式導師計畫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://milyzoo.github.io/Front-End/CSS-Selector-%E6%AC%8A%E9%87%8D%E7%9A%84%E8%A8%88%E7%AE%97%E6%96%B9%E5%BC%8F/01.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    
+<nav class="navbar is-transparent navbar-main" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation"> -->
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                Mily
+                <!-- 
+                <img src="/images/logo.png" alt="" height="28">
+                 -->
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-end">
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item "
+                   href="/archives">全文列表</a>
+                
+                <a class="navbar-item "
+                   href="/categories">文章分類</a>
+                
+            </div>
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
+        
+            CSS Selector 權重的計算方式
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2021-01-27T05:43:19.000Z" itemprop="datePublished">1月 27 2021</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+        </span>
+        
+        <!-- 
+        <span class="column is-narrow">
+            
+            
+            5 分钟 讀完 (約 737 字)
+        </span>
+         -->
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>在談論 CSS Selector 權重的「計算方式」之前，我們先來了解 CSS Selector 的<strong>優先權</strong>。</p>
+<a id="more"></a>
+
+<p>在優先權規則中，從高至低排列分別為：</p>
+<blockquote>
+<p>Animation（動畫執行期間）&gt; !important &gt; inline style &gt; ID &gt; Class 與屬性選取器 &gt; 元素選擇器 &gt; ＊通用選取器 &gt; 繼承的屬性</p>
+</blockquote>
+<h3 id="CSS-Selector-的類型"><a href="#CSS-Selector-的類型" class="headerlink" title="CSS Selector 的類型"></a>CSS Selector 的類型</h3><h4 id="1-Animation（動畫執行期間）"><a href="#1-Animation（動畫執行期間）" class="headerlink" title="1. Animation（動畫執行期間）"></a>1. Animation（動畫執行期間）</h4><p>關鍵影格（@keyframes）中的 CSS 屬性在「動畫執行期間」擁有絕對的優先權。</p>
+<h4 id="2-important"><a href="#2-important" class="headerlink" title="2. !important"></a>2. !important</h4><p>!important 是 CSS 中的特殊規則，只要在 CSS 屬性後面接上「!important」，將會變成極高的優先權，是人人懼怕的大魔王。</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">p</span> {</span><br><span class="line">  <span class="hljs-attribute">color</span>: red <span class="hljs-meta">!important</span>;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-class">.title</span> {</span><br><span class="line">  <span class="hljs-attribute">color</span>: blue;</span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>原本 Class 選取器 <code>.title</code> 優先於元素 <code>&lt;p&gt;</code>，一旦在屬性加上 <code>!important</code> 後，最後 Hello 字體呈現的結果會變成：</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">color</span>: <span class="hljs-selector-tag">red</span> !<span class="hljs-selector-tag">important</span>; <span class="hljs-comment">/* &lt;p&gt; !important 強制優先權 */</span></span><br><span class="line"><span class="hljs-selector-tag">font-size</span>: 16<span class="hljs-selector-tag">px</span>; <span class="hljs-comment">/* .title 賦予的屬性 */</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="3-行內樣式（inline-style）"><a href="#3-行內樣式（inline-style）" class="headerlink" title="3. 行內樣式（inline style）"></a>3. 行內樣式（inline style）</h4><p>利用 HTML 元素中的 style 屬性將 CSS 樣式寫入，就稱為行內樣式（inline style）。</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"color: red;"</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="4-ID-選擇器-id"><a href="#4-ID-選擇器-id" class="headerlink" title="4. ID 選擇器 #id"></a>4. ID 選擇器 <code>#id</code></h4><h4 id="5-類別選擇器-class-與屬性選取器-attr-value"><a href="#5-類別選擇器-class-與屬性選取器-attr-value" class="headerlink" title="5. 類別選擇器.class 與屬性選取器 [attr=value]"></a>5. 類別選擇器<code>.class</code> 與屬性選取器 <code>[attr=value]</code></h4><p>Class 選擇器值得一提的是，偽類別 (pseudo-class) ，是由單一一個「:」冒號作為開頭的選取器，本身也是 Class 選擇器的其中之一，讓人容易與「::」作為開頭的偽元素 (pseudo-element) 混淆。</p>
+<p>偽類別：<code>:hover</code>、<code>:nth-child</code>…<br>偽元素：<code>::before</code>、<code>::after</code>、<code>::placeholder</code>…</p>
+<h4 id="6-元素選擇器"><a href="#6-元素選擇器" class="headerlink" title="6. 元素選擇器"></a>6. 元素選擇器</h4><p>例如：<code>&lt;p&gt;</code>、<code>&lt;head&gt;</code>、<code>&lt;div&gt;</code> …</p>
+<h4 id="7-＊通用選取器"><a href="#7-＊通用選取器" class="headerlink" title="7. ＊通用選取器"></a>7. ＊通用選取器</h4><p>全域選擇器以星號 * 代表，適用於所有元素</p>
+<h4 id="8-繼承的屬性"><a href="#8-繼承的屬性" class="headerlink" title="8. 繼承的屬性"></a>8. 繼承的屬性</h4><p>如以下範例，雖然 <code>&lt;p&gt;</code> 沒有設定文字色彩屬性，但因為 <code>&lt;p&gt;</code> 寫在 <code>&lt;div&gt;</code> 當中，故 <code>&lt;p&gt;</code> 會繼承父層 <code>&lt;div&gt;</code> 的文字屬性。</p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>內文<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span> {</span><br><span class="line">  <span class="hljs-attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="CSS-Selector-的計算方式"><a href="#CSS-Selector-的計算方式" class="headerlink" title="CSS Selector 的計算方式"></a>CSS Selector 的計算方式</h3><p><img src="01.png"></p>
+<h4 id="計算值"><a href="#計算值" class="headerlink" title="計算值"></a>計算值</h4><ul>
+<li>ID 選擇器 = a</li>
+<li>Class 選擇器、屬性選取器、偽類別 = b</li>
+<li>元素選擇器、偽元素 = c</li>
+</ul>
+<h4 id="計算方式"><a href="#計算方式" class="headerlink" title="計算方式"></a>計算方式</h4><p>先比較 <code>a</code> 的數量，其次比較 <code>b</code> 的數量，最後比較 <code>c</code> 的數量</p>
+<h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h4><table>
+<thead>
+<tr>
+<th>選擇器</th>
+<th>權重值</th>
+<th>順位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>#nav &gt; li.active::before</td>
+<td>a = 1, b = 1, c = 2</td>
+<td>第一</td>
+</tr>
+<tr>
+<td>#nav li.active</td>
+<td>a = 1, b = 1, c = 1</td>
+<td>第二</td>
+</tr>
+<tr>
+<td>div .card.active:hover::before</td>
+<td>a = 0, b = 3, c = 2</td>
+<td>第三</td>
+</tr>
+<tr>
+<td>ul &gt; li:hover</td>
+<td>a = 0, b = 1, c = 2</td>
+<td>第四</td>
+</tr>
+</tbody></table>
+<p>如果想知道自己對於 CSS Selector 的<strong>優先權</strong>及<strong>計算方式</strong>的觀念是否正確，非常推薦到 <a target="_blank" rel="noopener" href="https://specificity.keegan.st/">Specificity Calculator</a> 這個網站測試看看。</p>
+<hr>
+<p>參考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://askie.today/what-is-webpack/">關於 Webpack，它是什麼？能夠做什麼？為什麼？怎麼做？</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42881768/article/details/105025095">Gulp 与 WebPack 有区别吗？如果有，有什么区别？</a></li>
+<li>《金魚都能懂的 CSS 選取器：金魚都能懂了你還怕學不會嗎》書籍內容</li>
+<li><a target="_blank" rel="noopener" href="http://www.w3.org/TR/selectors/#specificity">CSS3 Selectors Specificity</a></li>
+</ul>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/CSS/">#CSS</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Lidemy/">#程式導師計畫</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Front-End/JavaScript%20-%20Fetch-Promise-Async-Await/">JavaScript - Fetch/Promise/Async/Await</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Front-End/CSS-%E9%A0%90%E8%99%95%E7%90%86%E5%99%A8-SASS-%E5%9F%BA%E6%9C%AC%E8%AA%9E%E6%B3%95%E4%BB%8B%E7%B4%B9/">CSS 預處理器 - SASS 基本語法介紹</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="has-text-centered">
+        &copy; 2021 <a href="https://github.com/milyzoo" target="_blank">Mily</a> All Rights Reserved. 
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
