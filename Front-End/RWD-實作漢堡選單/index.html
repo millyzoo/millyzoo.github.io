@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<!-- <html class="has-navbar-fixed-top"> -->
+<head>
+    <meta charset="utf-8">
+<title>RWD - 實作漢堡選單 - Mily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="以下為我自己學習 HTML &amp; CSS 時，實作漢堡選單的過程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RWD - 實作漢堡選單">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/RWD-%E5%AF%A6%E4%BD%9C%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE/index.html">
+<meta property="og:site_name" content="Mily">
+<meta property="og:description" content="以下為我自己學習 HTML &amp; CSS 時，實作漢堡選單的過程。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/RWD-%E5%AF%A6%E4%BD%9C%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE/menu-icon.png">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/RWD-%E5%AF%A6%E4%BD%9C%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE/navbar-layout.png">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/RWD-%E5%AF%A6%E4%BD%9C%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE/mobile-menu.gif">
+<meta property="og:image" content="https://milyzoo.github.io/Front-End/RWD-%E5%AF%A6%E4%BD%9C%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE/mobile-menu-finish.gif">
+<meta property="article:published_time" content="2021-01-26T10:30:15.000Z">
+<meta property="article:modified_time" content="2021-05-23T16:02:53.464Z">
+<meta property="article:author" content="Mily">
+<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="程式導師計畫">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://milyzoo.github.io/Front-End/RWD-%E5%AF%A6%E4%BD%9C%E6%BC%A2%E5%A0%A1%E9%81%B8%E5%96%AE/menu-icon.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    
+<nav class="navbar is-transparent navbar-main" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation"> -->
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                Mily
+                <!-- 
+                <img src="/images/logo.png" alt="" height="28">
+                 -->
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-end">
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item "
+                   href="/archives">全文列表</a>
+                
+                <a class="navbar-item "
+                   href="/categories">文章分類</a>
+                
+            </div>
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
+        
+            RWD - 實作漢堡選單
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2021-01-26T10:30:15.000Z" itemprop="datePublished">1月 26 2021</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+        </span>
+        
+        <!-- 
+        <span class="column is-narrow">
+            
+            
+            3 分钟 讀完 (約 421 字)
+        </span>
+         -->
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>以下為我自己學習 HTML &amp; CSS 時，實作漢堡選單的過程。</p>
+<a id="more"></a>
+
+<h2 id="製作漢堡選單圖標"><a href="#製作漢堡選單圖標" class="headerlink" title="製作漢堡選單圖標"></a>製作漢堡選單圖標</h2><p>首先需刻出選單樣式，先將按鈕拆解成三條橫線。</p>
+<p><img src="menu-icon.png"></p>
+<figure class="highlight html hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mobile-menu"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"mobile-menu__line"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.mobile-menu</span> {</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">35px</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="line">  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-class">.mobile-menu__line</span>,</span><br><span class="line"><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::before</span>,</span><br><span class="line"><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::after</span> {</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">4px</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#010101</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 漢堡選單中間橫槓 */</span></span><br><span class="line"><span class="hljs-selector-class">.mobile-menu__line</span> {</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;</span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 漢堡選單上面橫槓 */</span></span><br><span class="line"><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::before</span> {</span><br><span class="line">  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 漢堡選單下面橫槓 */</span></span><br><span class="line"><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::after</span> {</span><br><span class="line">  <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;</span><br><span class="line">  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="調整手機版選單介面"><a href="#調整手機版選單介面" class="headerlink" title="調整手機版選單介面"></a>調整手機版選單介面</h2><p>接著要將電腦版的導覽列轉成手機版。</p>
+<p><img src="navbar-layout.png"></p>
+<p>手機版畫面自由調整成需要的畫面即可，我這邊使用 position 來讓畫面滿版呈現。</p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">768px</span>) {</span><br><span class="line"><span class="hljs-selector-tag">header</span> {</span><br><span class="line">  <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-class">.navbar</span> {</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;</span><br><span class="line">  <span class="hljs-comment">/* 先把高度設 0 使選單隱藏 */</span></span><br><span class="line">  <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">  <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="hljs-selector-class">.open</span><span class="hljs-selector-class">.navbar</span> {</span><br><span class="line">  <span class="hljs-comment">/* 偵測到 click 事件才會顯示高度 */</span></span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>加入 JacaScript。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> mobileMenu = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.mobile-menu'</span>)</span><br><span class="line"><span class="hljs-keyword">const</span> navbar = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.navbar'</span>)</span><br><span class="line">  mobileMenu.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{</span><br><span class="line">  navbar.classList.toggle(<span class="hljs-string">'open'</span>)</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>這樣即可完成基本的漢堡選單！<br><img src="mobile-menu.gif"></p>
+<h2 id="增加按鈕變化"><a href="#增加按鈕變化" class="headerlink" title="增加按鈕變化"></a>增加按鈕變化</h2><p>雖然剛剛已經完成最基本的漢堡選單，但我們可以再繼續優化，加入一些小動畫能更符合使用者體驗。</p>
+<p>效果：<br><img src="mobile-menu-finish.gif"></p>
+<figure class="highlight css hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.open</span> <span class="hljs-selector-class">.mobile-menu__line</span> {</span><br><span class="line"><span class="hljs-comment">/* 點擊後圖標中間橫線消失 */</span></span><br><span class="line">  <span class="hljs-attribute">display</span>: none;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">/* 以下設定為點擊後上下橫線旋轉位移 */</span></span><br><span class="line"><span class="hljs-selector-class">.open</span><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::before</span>,</span><br><span class="line"><span class="hljs-selector-class">.open</span><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::after</span> {</span><br><span class="line">  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;</span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.open</span><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::before</span> {</span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">45deg</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.open</span><span class="hljs-selector-class">.mobile-menu</span><span class="hljs-selector-pseudo">::after</span> {</span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(-<span class="hljs-number">45deg</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>記得最後在適當的位置設定 <code>transition</code>，就大功告成囉！</p>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/CSS/">#CSS</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Lidemy/">#程式導師計畫</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/HTML/">#HTML</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/Front-End/CSS-Selector-%E6%AC%8A%E9%87%8D%E7%9A%84%E8%A8%88%E7%AE%97%E6%96%B9%E5%BC%8F/">CSS Selector 權重的計算方式</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Front-End/JavaScript%20-%20%E8%AE%8A%E6%95%B8%E8%88%87%E8%B3%A6%E5%80%BC/">JavaScript - 變數與賦值</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="has-text-centered">
+        &copy; 2021 <a href="https://github.com/milyzoo" target="_blank">Mily</a> All Rights Reserved. 
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
