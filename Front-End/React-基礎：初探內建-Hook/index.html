@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<!-- <html class="has-navbar-fixed-top"> -->
+<head>
+    <meta charset="utf-8">
+<title>React 基礎：初探內建 Hook - Mily</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+<meta name="description" content="">
+
+
+
+
+
+    <meta name="description" content="此篇為 React 學習筆記，僅介紹 Hook 基本功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 基礎：初探內建 Hook">
+<meta property="og:url" content="https://milyzoo.github.io/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9A%E5%88%9D%E6%8E%A2%E5%85%A7%E5%BB%BA-Hook/index.html">
+<meta property="og:site_name" content="Mily">
+<meta property="og:description" content="此篇為 React 學習筆記，僅介紹 Hook 基本功能">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/pe1zbGp.png">
+<meta property="og:image" content="https://imgpile.com/images/NnJi1j.png">
+<meta property="article:published_time" content="2021-05-24T12:39:08.000Z">
+<meta property="article:modified_time" content="2021-05-24T12:42:42.405Z">
+<meta property="article:author" content="Mily">
+<meta property="article:tag" content="程式導師計畫">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/pe1zbGp.png">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow-night-eighties.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    
+<nav class="navbar is-transparent navbar-main" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation"> -->
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                Mily
+                <!-- 
+                <img src="/images/logo.png" alt="" height="28">
+                 -->
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-end">
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item "
+                   href="/archives">全文列表</a>
+                
+                <a class="navbar-item "
+                   href="/categories">文章分類</a>
+                
+            </div>
+            
+            <div class="navbar-menu">
+                
+                <a class="navbar-item search" title="搜尋" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                
+                <!-- 
+                        <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/milyzoo">
+                            
+                            <i class="fab fa-github"></i>
+                            
+                        </a>
+                   
+                 -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-4-mobile" itemprop="name">
+        
+            React 基礎：初探內建 Hook
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2021-05-24T12:39:08.000Z" itemprop="datePublished">5月 24 2021</time>
+        </span>
+        
+        <span class="column is-narrow article-category">
+            <i class="far fa-folder"></i>
+            <a class="article-category-link" href="/categories/Front-End/">Front-End</a>
+        </span>
+        
+        <!-- 
+        <span class="column is-narrow">
+            
+            
+            10 分钟 讀完 (約 1546 字)
+        </span>
+         -->
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <html><head></head><body><p>此篇為 React 學習筆記，僅介紹 Hook 基本功能</p>
+<a id="more"></a>
+
+<p>React 內建的所有 hook：</p>
+<ul>
+<li>useState</li>
+<li>useEffect</li>
+<li>useContext</li>
+<li>useReducer</li>
+<li>useRef</li>
+<li>useCallback</li>
+<li>useMemo</li>
+<li>useImperativeHandle</li>
+<li>useLayoutEffect</li>
+<li>useDebugValue</li>
+</ul>
+<h3 id="1-useState"><a href="#1-useState" class="headerlink" title="1. useState"></a>1. useState</h3><p>useState 用來監控 component 的資料是否有變動，並藉此連動改變畫面。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> [state, setState] = useState(initialState);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>state：state 的變數名稱，存放著 state 的值，也是要監控的變數。</li>
+<li>setState：改變 state 的函式名稱，可透過 setState 來修改 state。</li>
+<li>initialState：代表第一次 render 時，帶入的資料初始值。</li>
+<li>state 與 setState 可以任意取名。</li>
+</ul>
+<p>以計時器作為使用範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 步驟一：從 React 物件中引入 useState</span></span><br><span class="line"><span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-comment">// 步驟二：宣告一個新的 state 變數，我們稱為 counter，並將初始值設定為 0。</span></span><br><span class="line">  <span class="hljs-keyword">const</span> [counter, setCounter] = useState(<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> handleButtonClick = <span class="hljs-function">() =&gt;</span> {</span><br><span class="line">    <span class="hljs-comment">// 步驟三：透過 setCounter 來改變 count 的值</span></span><br><span class="line">    setCounter(counter + <span class="hljs-number">1</span>)</span><br><span class="line">  }</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">      counter: {counter}</span><br><span class="line">      &lt;button onClick={handleButtonClick}&gt;increment&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-useEffect"><a href="#2-useEffect" class="headerlink" title="2. useEffect"></a>2. useEffect</h3><p>useEffect 能用來在瀏覽器畫面渲染完成後才呼叫指定行為。<br>適合用在初次畫面渲染後和 React 本身無關而需要執行的動作，例如：發送 API 請求資料、localStorage 資料儲存。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useEffect(&lt;didUpdate&gt;, [dependencies])</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>第一個參數：帶入在「畫面渲染完成」後才呼叫的函式。</li>
+<li>第二個參數：是一個陣列，用來偵測每次畫面重新渲染後，參數內的元素有沒有改變，如果有改變，useEffect 裡第一個參數的函式才會被呼叫。</li>
+<li>當第二個參數是 <code>[]</code> 時，因為裡面是空的，rerender 後也不會改變，所以只有第一次 render 後會執行 useEffect 內的函式。</li>
+</ul>
+<p><img src="https://i.imgur.com/pe1zbGp.png"></p>
+<p>從 Hook Flow 圖表可以得知在 Update 時有個步驟是 <strong>Cleanup Effects</strong>，在 useEffect 可以 return 一個 function，裡面放的就是在 <strong>Cleanup Effects</strong> 步驟要執行的事情。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">useEffect(</span><br><span class="line">  () =&gt; {</span><br><span class="line">    <span class="hljs-comment">// Run Effects 步驟，render 後要完成的事</span></span><br><span class="line">    <span class="hljs-comment">// Mount 及 Update 階段都會執行</span></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {</span><br><span class="line">      <span class="hljs-comment">// Cleanup Effects 步驟，在 effect 被清除前完成的事</span></span><br><span class="line">      <span class="hljs-comment">// 只在 Update 或 Unmount 階段執行</span></span><br><span class="line">    };</span><br><span class="line">  },</span><br><span class="line">  [dependencies],</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="3-useContext"><a href="#3-useContext" class="headerlink" title="3. useContext"></a>3. useContext</h3><p>useContext 能避免 component 需要多層傳遞 props 的問題。</p>
+<p>我們可以從以下圖片來了解有沒有使用 useContext 的差別：</p>
+<p>（左）使用 useContext 前 / （右）使用 useContext 後<br><img src="https://imgpile.com/images/NnJi1j.png"><br>（<a target="_blank" rel="noopener" href="https://medium.com/hannah-lin/react-hook-%E7%AD%86%E8%A8%98-usecontext-4bc289976847">圖片來源</a>）</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> value = useContext(MyContext);</span><br></pre></td></tr></tbody></table></figure>
+<p>接收來自 React.createContext 的回傳值，並回傳該 context 目前的值。Context 目前的值是取決於距離最近的 &lt;MyContext.Provider&gt; 的 value prop。</p>
+<p>當距離最近的 &lt;MyContext.Provider&gt; 更新時，便會重新 render，並將最新的 context value 傳送到 MyContext provider。</p>
+<p>範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React, { createContext, useContext } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> themes = {</span><br><span class="line">  light: {</span><br><span class="line">    background: <span class="hljs-string">"#eeeeee"</span></span><br><span class="line">  },</span><br><span class="line">  dark: {</span><br><span class="line">    background: <span class="hljs-string">"#222222"</span></span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> ThemeContext = React.createContext(themes.light);</span><br><span class="line"><span class="hljs-comment">// STEP 1: 使用 createContext 來建立 context，createContext 裡面的內容為預設值</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;ThemeContext.Provider value={themes.dark}&gt;</span><br><span class="line">    <span class="hljs-comment">// STEP 2: 使用 Context.Provider 包覆元件並將 value 傳遞至內部的每個元件</span></span><br><span class="line">      &lt;Toolbar /&gt;</span><br><span class="line">    &lt;/ThemeContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Toolbar</span>(<span class="hljs-params">props</span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;ThemedButton /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ThemedButton</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">const</span> theme = useContext(ThemeContext);</span><br><span class="line">  <span class="hljs-comment">// STEP 3: 接收來自 &lt;ThemeContext.Provider&gt; 的 value</span></span><br><span class="line">  </span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;button style={{ <span class="hljs-attr">background</span>: theme.background }}&gt;</span><br><span class="line">      I am styled by theme context!</span><br><span class="line">    &lt;/button&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="4-useReducer"><a href="#4-useReducer" class="headerlink" title="4. useReducer"></a>4. useReducer</h3><p>useReducer 可以用來取代 useState，當 state 邏輯較為複雜時，使用 useReducer 管理 state 會比 useState 更適用。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> [state, dispatch] = useReducer(reducer, initialArg, init);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="5-useRef"><a href="#5-useRef" class="headerlink" title="5. useRef"></a>5. useRef</h3><p>useRef 有兩種使用方式：</p>
+<ol>
+<li>可以用來存取 DOM 元素的資訊。</li>
+<li>能夠保存數值，並在重新渲染後不會改變其值。</li>
+</ol>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> refContainer = useRef(initialValue);</span><br></pre></td></tr></tbody></table></figure>
+<p>使用範例：</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> { useState, useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{</span><br><span class="line">  <span class="hljs-keyword">const</span> inputRef = useRef();</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">const</span> handleButtonClick = <span class="hljs-function">() =&gt;</span> {</span><br><span class="line">    <span class="hljs-comment">// console.log(inputRef); 如果只用 inputRef 的話回傳的是一個陣列，而不是詳細資訊</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(inputRef.current.value);</span><br><span class="line">    <span class="hljs-comment">// 所以使用 inputRef.current.value 即可拿到鍵盤在 input 上輸入的值</span></span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">      &lt;input ref={inputRef} type=<span class="hljs-string">"text"</span> placeholder=<span class="hljs-string">"todo"</span> value={value} onChange={handleInputChange} /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="6-useCallback"><a href="#6-useCallback" class="headerlink" title="6. useCallback"></a>6. useCallback</h3><p>useCallback 利用 Memorize 來減少不必要的 render。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> memoizedCallback = useCallback(</span><br><span class="line">  () =&gt; {</span><br><span class="line">    <span class="hljs-keyword">return</span> doSomething(a, b);</span><br><span class="line">  },</span><br><span class="line">  [a, b],</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 簡化後：</span></span><br><span class="line"><span class="hljs-keyword">const</span> memoizedCallback = useCallback(<span class="hljs-function">() =&gt;</span> doSomething(a, b), [a, b]);</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>第一個參數：callback function。</li>
+<li>第二個參數：useCallback 依賴的陣列，用來偵測每次畫面重新渲染後，參數內的元素有沒有改變。</li>
+</ul>
+<p>只有在 dependencies 改變時，useCallback 才會 return 一個 memoized 的 callback function（換句話說就是 dependencies 沒有改變時，會把 function 先保存起來）。</p>
+<h3 id="7-useMemo"><a href="#7-useMemo" class="headerlink" title="7. useMemo"></a>7. useMemo</h3><p>useMemo 可以避免在每次 render 都要重新進行複雜的運算。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> memoizedValue = useMemo(</span><br><span class="line">  () =&gt; {</span><br><span class="line">    <span class="hljs-keyword">return</span> computeExpensiveValue(a, b),</span><br><span class="line">  [a, b]</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 簡化後：</span></span><br><span class="line"><span class="hljs-keyword">const</span> memoizedValue = useMemo(<span class="hljs-function">() =&gt;</span> computeExpensiveValue(a, b), [a, b]);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>第一個參數： “create” function。</li>
+<li>第二個參數：useMemo 依賴的陣列，用來偵測每次畫面重新渲染後，參數內的元素有沒有改變。如果沒有提供陣列，每次 render 時都會計算新的值。</li>
+</ul>
+<p>只有在 dependencies 改變時，useMemo 才會重新計算 memoized 的值。</p>
+<h4 id="useCallback-和-useMemo-的差別"><a href="#useCallback-和-useMemo-的差別" class="headerlink" title="useCallback 和 useMemo 的差別"></a>useCallback 和 useMemo 的差別</h4><p>根據官方文件可以知道 <code>useCallback(fn, deps)</code> 相等於 <code>useMemo(() =&gt; fn, deps)</code><br>兩者最大的不同在於：</p>
+<ul>
+<li>useCallback 回傳 callBack function，所以可以傳參數進去。</li>
+<li>useMemo 回傳值。</li>
+</ul>
+<h3 id="8-useImperativeHandle"><a href="#8-useImperativeHandle" class="headerlink" title="8. useImperativeHandle"></a>8. useImperativeHandle</h3><p>useImperativeHandle 可以在使用 ref 時，向父層 component 暴露自定義的 instance 值。</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>第一個參數：要使用的 ref。</li>
+<li>第二個參數：傳給父層 component 的行為。</li>
+</ul>
+<p>官方建議在大多數的情況下應避免使用 ref 的命令式代碼。</p>
+<h3 id="9-useLayoutEffect"><a href="#9-useLayoutEffect" class="headerlink" title="9. useLayoutEffect"></a>9. useLayoutEffect</h3><p>useLayoutEffect 與 useEffect 的使用方法相同，但功能卻相反。</p>
+<ul>
+<li>useLayoutEffect 用於瀏覽器畫面渲染完成「前」呼叫指定行為。</li>
+<li>useEffect 用於瀏覽器畫面渲染完成「後」呼叫指定行為。</li>
+</ul>
+<p>官方建議盡可能使用標準的 useEffect 來避免阻礙視覺上的更新。</p>
+<h3 id="10-useDebugValue"><a href="#10-useDebugValue" class="headerlink" title="10. useDebugValue"></a>10. useDebugValue</h3><p>useDebugValue 可以用來在 React DevTools 中顯示自訂義 hook 的標籤。<br>（React DevTools 是由 Facebook 團隊所開發的 chrome 偵錯工具。）</p>
+<figure class="highlight javascript hljs"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDebugValue(value)</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>參考資料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zh-hant.reactjs.org/docs/hooks-reference.html">官方文件：Hooks API 參考</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/hannah-lin/react-hook-%E7%AD%86%E8%A8%98-usecontext-4bc289976847">[React Hook 筆記] useContext</a></li>
+<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2019/07/react-react-context-api.html">[React] React Context API 以及 useContext Hook 的使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/hannah-lin/react-hook-%E7%AD%86%E8%A8%98-memorized-hook-usememo-usecallback-e08a5e1bc9a2#ceb0">[React Hook 筆記] Memorized Hook- useMemo, useCallback</a></li>
+</ul>
+</body></html>
+    
+    </div>
+    
+    <div class="columns is-variable is-1 is-multiline is-mobile">
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/Lidemy/">#程式導師計畫</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/JavaScript/">#JavaScript</a></span>
+    
+        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/React/">#React</a></span>
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/Front-End/React-%E5%9F%BA%E7%A4%8E%EF%BC%9AuseState%20%E5%AF%A6%E6%88%B0%20Todo%20List/">React 基礎：useState 實戰 Todo List</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="has-text-centered">
+        &copy; 2021 <a href="https://github.com/milyzoo" target="_blank">Mily</a> All Rights Reserved. 
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+    
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" target="_blank" rel="noopener" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("zh-CN");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hljs .clipboard-btn:hover {
+          color: #8a8a8a;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+        clipboard.on('success', function(e) {
+          e.clearSelection();
+        })
+      })
+    </script>
+
+    
+    
+
+    
+
+
+
+<script src="/js/script.js"></script>
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="站內搜尋" />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '頁面',
+                CATEGORIES: '分類',
+                TAGS: '標籤',
+                UNTITLED: '(無標題)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+    
+</body>
+</html>
